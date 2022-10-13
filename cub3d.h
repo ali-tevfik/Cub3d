@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/03 16:54:26 by adoner        ########   odam.nl         */
+/*   Updated: 2022/10/13 18:55:35 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,51 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_direction
+typedef struct s_img
 {
-    char	*NO;
-    char	*SO;
-    char	*WE;
-    char	*EA;
-}			t_direction;
+	void	*img_ptr;
+	char	*address;
+	int		bits_per_pixel;
+	int		line_size;
+	int		len_height;
+	int		img_width;
+	int		endian;
+	int		x;
+	int		y;
+}			t_img;
 
-typedef struct s_color
+typedef struct s_map
 {
-    char	*F;
-    char 	*C;
-}				t_color;
+	int		player;
+	int		collection;
+	int		exit;
+	int		line;
+	int		len;
+	char	**maps;
+}			t_map;
 
-typedef struct s_maps
+typedef struct s_vars
 {
-    char		**maps;
-    int			len;
-    int			line;
-    t_color		color;
-    t_direction	direction;
-}               t_map;
+	void	*mlx;
+	void	*win;
+	int		image_len;
+	t_img	player;
+	t_img	background;
+	t_img	walls;
+	t_img	exit;
+	t_img	collection;
+	t_img	remove_old_chr;
+	t_img	open_exit;
+	int		game_speed;
+	int		total_eat;
+	int		counter;
+	int		ate;
+	t_map	map_info;
+}			t_vars;
 
+int	click_button(int keycode, t_vars *vars);
+int	close_clik(t_vars *vars);
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
+void create_player(t_vars *vars, int player_x, int player_y);
 
 # endif

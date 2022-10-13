@@ -5,7 +5,8 @@ BLUE = \033[38;5;4m
 
 SRCS	=	get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
-			main.c
+			main.c\
+			keyboard.c
 
 OBJS	= $(SRCS:.c=.o)
 
