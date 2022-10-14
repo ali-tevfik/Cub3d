@@ -29,29 +29,28 @@ void clean_old_image(t_vars *vars)
 		y = 0;
 		while (y < 50)
 		{
-			my_mlx_pixel_put(&vars->background, x, y, 0XFFD966);
+			my_mlx_pixel_put(&vars->player, x, y, 0XADD8E6);
 			y++;
 		}
 		x++;
 	}
 	printf("x %d y %d\n",vars->player.x, vars->player.y);
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, vars->player.x, vars->player.y);
+		vars->player.img_ptr, vars->player.x, vars->player.y);
 }
 
 void	change_position(t_vars *vars, int keycode)
 {
 	clean_old_image(vars);
-	keycode = 0;
-	// if (keycode == LEFT || keycode == A)
-	// 	vars->player.x = vars->player.x - vars->image_len;
-	// if (keycode == RIGHT || keycode == D)
-	// 	vars->player.x = vars->player.x + vars->image_len;
-	// if (keycode == DOWN || keycode == S)
-	// 	vars->player.y = vars->player.y + vars->image_len;
-	// if (keycode == UP || keycode == W)
-	// 	vars->player.y = vars->player.y - vars->image_len;
-	// create_player(vars, vars->player.x, vars->player.y);
+	if (keycode == LEFT || keycode == A)
+		vars->player.x = vars->player.x - vars->image_len;
+	if (keycode == RIGHT || keycode == D)
+		vars->player.x = vars->player.x + vars->image_len;
+	if (keycode == DOWN || keycode == S)
+		vars->player.y = vars->player.y + vars->image_len;
+	if (keycode == UP || keycode == W)
+		vars->player.y = vars->player.y - vars->image_len;
+	create_player(vars, vars->player.x, vars->player.y);
 }
 
 int	click_button(int keycode, t_vars *vars)

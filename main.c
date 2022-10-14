@@ -44,35 +44,41 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	int x = 0;
 	int y = 0;
 
+	
 	while (x < 50)
 	{
 		y = 0;
 		while (y < 50)
 		{
-			my_mlx_pixel_put(&vars->background, x, y, 0XE6ADD8);
+			my_mlx_pixel_put(&vars->player, x, y, 0XE6ADD8);
 			y++;
 		}
 		x++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, player_x, player_y);
+		vars->player.img_ptr, player_x, player_y);
 }
 void create_walls(t_vars *vars, int wall_x, int wall_y)
 {
 	int x = 0;
 	int y = 0;
+	
+	vars->walls.img_ptr = mlx_new_image(vars->mlx, 50, 50);
+	vars->walls.address = mlx_get_data_addr(vars->walls.img_ptr, &vars->walls.bits_per_pixel, &vars->walls.line_size, &vars->walls.endian);
+
+
 	while (x < 50)
 	{
 		y = 0;
 		while (y < 50)
 		{
-			my_mlx_pixel_put(&vars->background, x, y, 0X000000);
+			my_mlx_pixel_put(&vars->walls, x, y, 0X4C1130);
 			y++;
 		}
 		x++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, wall_x * vars->image_len, wall_y * vars->image_len);
+		vars->walls.img_ptr, wall_x * 50 , wall_y * 50 );
 }
 t_vars	*maps_load(t_vars *vars)
 {
@@ -93,6 +99,9 @@ t_vars	*maps_load(t_vars *vars)
 			{
 				vars->player.y = vars->image_len * x;
 				vars->player.x = vars->image_len * a;
+				vars->player.img_ptr = mlx_new_image(vars->mlx, 50, 50);
+				vars->player.address = mlx_get_data_addr(vars->player.img_ptr, &vars->player.bits_per_pixel, &vars->player.line_size, &vars->player.endian);
+
 				create_player(vars, vars->player.x, vars->player.y);
 			}
 			a++;
