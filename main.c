@@ -45,10 +45,10 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	int y = 0;
 
 	
-	while (x < 50)
+	while (x < 5)
 	{
 		y = 0;
-		while (y < 50)
+		while (y < 5)
 		{
 			my_mlx_pixel_put(&vars->player, x, y, 0XE6ADD8);
 			y++;
@@ -99,7 +99,7 @@ t_vars	*maps_load(t_vars *vars)
 			{
 				vars->player.y = vars->image_len * x;
 				vars->player.x = vars->image_len * a;
-				vars->player.img_ptr = mlx_new_image(vars->mlx, 50, 50);
+				vars->player.img_ptr = mlx_new_image(vars->mlx, 5, 5);
 				vars->player.address = mlx_get_data_addr(vars->player.img_ptr, &vars->player.bits_per_pixel, &vars->player.line_size, &vars->player.endian);
 
 				create_player(vars, vars->player.x, vars->player.y);
@@ -117,8 +117,10 @@ void	start_draw(char **data, t_map *maps_info)
 {
 	t_vars	vars;
 
-	vars.game_speed = 50;
+	vars.game_speed = 5;
 	vars.map_info.maps = data;
+	vars.map_info.len = maps_info->len;
+	vars.map_info.line = maps_info->line;
 	vars.image_len = 50;
 	create_win(&vars, maps_info->len , maps_info->line);
 	maps_load(&vars);

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/13 18:55:35 by adoner        ########   odam.nl         */
+/*   Updated: 2022/10/16 13:06:18 by tevfik        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ typedef struct s_vars
 	t_map	map_info;
 }			t_vars;
 
+int check_up(t_vars *vars);
 int	click_button(int keycode, t_vars *vars);
+int check_right(t_vars *vars);
+int check_left(t_vars *vars);
+int check_down(t_vars *vars);
 int	close_clik(t_vars *vars);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_vars *vars, int player_x, int player_y);

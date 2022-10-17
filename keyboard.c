@@ -2,32 +2,15 @@
 
 
 
-int	check_position(t_vars *vars, int a, int b)
-{
-	int	x;
-	int	y;
-
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (vars->map_info.maps[y - a][x - b] == '1')
-		return (-1);
-	else if (vars->map_info.maps[y - a][x - b] == 'E')
-		return (-2);
-	else if (vars->map_info.maps[y - a][x - b] == 'C')
-		return (1);
-	else
-		return (0);
-}
-
 void clean_old_image(t_vars *vars)
 {
 	int x = 0;
 	int y = 0;
 	
-	while (x < 50)
+	while (x < 5)
 	{
 		y = 0;
-		while (y < 50)
+		while (y < 5)
 		{
 			my_mlx_pixel_put(&vars->player, x, y, 0XADD8E6);
 			y++;
@@ -43,24 +26,62 @@ void	change_position(t_vars *vars, int keycode)
 {
 	clean_old_image(vars);
 	if (keycode == LEFT || keycode == A)
-		vars->player.x = vars->player.x - vars->image_len;
+		vars->player.x = vars->player.x - vars->game_speed;
 	if (keycode == RIGHT || keycode == D)
-		vars->player.x = vars->player.x + vars->image_len;
+		vars->player.x = vars->player.x + vars->game_speed;
 	if (keycode == DOWN || keycode == S)
-		vars->player.y = vars->player.y + vars->image_len;
+		vars->player.y = vars->player.y + vars->game_speed;
 	if (keycode == UP || keycode == W)
-		vars->player.y = vars->player.y - vars->image_len;
+		vars->player.y = vars->player.y - vars->game_speed;
 	create_player(vars, vars->player.x, vars->player.y);
 }
 
+void	check_position(t_vars *vars)
+{
+	int x = vars->player.x /50;
+	int y = vars->player.y / 50;
+	printf("konum x = %d y %d\n", x , y);
+}
+
+
 int	click_button(int keycode, t_vars *vars)
 {
+	int result;
 
+	result = -1;
+	
 	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
         exit(0);
 	}
+	check_position(vars);
+	if (keycode == RIGHT || keycode == D)
+		{
+			if (check_right(vars))
+				result = 0;
+		}
+	else if (keycode == LEFT || keycode == A)
+	{
+		if (check_left(vars))
+			result = 0;
+	}
+
+	else if (keycode == DOWN || keycode == S){
+		if (check_down(vars))
+			result = 0;
+		}
+	else if (keycode == UP || keycode == W)
+	{
+		printf("burda\n");
+		if (check_up(vars) && result != 0){
+			printf("girdi\n\n");
+			result = 0;
+		}
+	}
+	else
+		return (0);
+	if (result == 0)
 	change_position(vars, keycode);
 	return (0);
 }
