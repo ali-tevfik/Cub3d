@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/16 13:06:18 by tevfik        ########   odam.nl         */
+/*   Updated: 2022/10/20 16:09:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+#include <math.h>
 # include "libft/libft.h"
 
 # define ESC 53
@@ -60,6 +61,7 @@ typedef struct s_vars
 	void	*win;
 	int		image_len;
 	t_img	player;
+	t_img	spaces;
 	t_img	background;
 	t_img	walls;
 	t_img	exit;
@@ -78,8 +80,10 @@ int	click_button(int keycode, t_vars *vars);
 int check_right(t_vars *vars);
 int check_left(t_vars *vars);
 int check_down(t_vars *vars);
+t_vars	*maps_load(t_vars *vars, int where);
 int	close_clik(t_vars *vars);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_vars *vars, int player_x, int player_y);
+void draw_line(t_vars *data, double angle, int line_lenght, long color);
 
 # endif
