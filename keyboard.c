@@ -4,31 +4,45 @@ void draw_line(t_vars *data, double angle, int line_lenght, long color)
 {
     int x1;
     int y1;
-
+	int dx = sin(angle) + data->player.x;;
+	int dy = cos(angle) + data->player.y;
     for(int i = 0; i < line_lenght; i += 1)
     {
         x1 = i * sin(angle) + data->player.x;
         y1 = i * cos(angle) + data->player.y;
         if (x1 < 15 * 50 && x1 > 0  && y1 < 6 * 50 && y1 > 0)
         {
-			my_mlx_pixel_put(&data->player, x1, y1, color);
+			my_mlx_pixel_put(&data->background, x1, y1, color);
     		printf("draw line x value = %d, y value = %d\n", x1, y1);
 		}
     }
-	// mlx_put_image_to_window(data->mlx, data->win,
-	// 	data->player.img_ptr, x1, y1);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->background.img_ptr, dx , dy);
 }
 
 
+void clean_maps(t_vars *vars)
+{
+	mlx_clear_window(vars->mlx, vars->win);
 
+}
 void	change_position(t_vars *vars, int keycode)
 {
-	maps_load(vars, 1);
+	// clean_maps(vars);
+	// maps_load(vars, 1);
 	if (keycode == LEFT || keycode == A)
 	{
-		//vars->player.x = vars->player.x - vars->game_speed;
-		vars->player.x = vars->player.x - 15;
-		vars->player.y = vars->player.y - 15;
+		vars->player.x = vars->player.x - vars->game_speed;
+		// vars->player.pa -= 0.1;
+		// if ( vars->player.pa < 0)
+		// 	vars->player.pa += 2 * PI;
+		// vars->player.d_x = cos(vars->player.pa) * 5;
+		// vars->player.d_y = sin(vars->player.pa) * 5;
+		// if (vars->player.d_x < 0)
+		// 	vars->player.d_x = 1;
+		// if (vars->player.d_y < 0)
+		// 	vars->player.d_y = 1;
+		// printf("dx %f dy %f\n", vars->player.d_x, vars->player.d_y);
 	}
 	if (keycode == RIGHT || keycode == D)
 		vars->player.x = vars->player.x + vars->game_speed;
@@ -37,16 +51,15 @@ void	change_position(t_vars *vars, int keycode)
 	if (keycode == UP || keycode == W)
 		vars->player.y = vars->player.y - vars->game_speed;
 
-	// float a = (float)(30 /180) * 3.14159265359 ;
-	// draw_line(vars, a, 10, 0XFFFF00);
 	create_player(vars, vars->player.x, vars->player.y);
+
 }
 
 void	check_position(t_vars *vars)
 {
-	int x = vars->player.x /50;
-	int y = vars->player.y / 50;
-	printf("konum x = %d y %d\n", x * 50 , y * 50);
+	int x = vars->player.x;
+	int y = vars->player.y;
+	printf("konum x = %d y %d\n", x , y);
 }
 
 
@@ -61,7 +74,6 @@ int	click_button(int keycode, t_vars *vars)
 		mlx_destroy_window(vars->mlx, vars->win);
         exit(0);
 	}
-	check_position(vars);
 	if (keycode == RIGHT || keycode == D)
 		{
 			if (check_right(vars))
@@ -87,8 +99,9 @@ int	click_button(int keycode, t_vars *vars)
 	}
 	else
 		return (0);
+	result = 0;
 	if (result == 0)
-	change_position(vars, keycode);
+		change_position(vars, keycode);
 	return (0);
 }
 

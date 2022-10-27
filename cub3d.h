@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/20 16:09:29 by adoner        ########   odam.nl         */
+/*   Updated: 2022/10/27 15:40:59 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define A 0
 # define TRUE 1
 # define FALSE 0
-
+# define PI 3.14159265359
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -41,8 +41,6 @@ typedef struct s_img
 	int		len_height;
 	int		img_width;
 	int		endian;
-	int		x;
-	int		y;
 }			t_img;
 
 typedef struct s_map
@@ -54,20 +52,22 @@ typedef struct s_map
 	int		len;
 	char	**maps;
 }			t_map;
+typedef struct s_player
+{
+	int x;
+	int y;
+	double d_x;
+	double d_y;
+	double pa;
+}				t_player;
 
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 	int		image_len;
-	t_img	player;
-	t_img	spaces;
 	t_img	background;
-	t_img	walls;
-	t_img	exit;
-	t_img	collection;
-	t_img	remove_old_chr;
-	t_img	open_exit;
+	t_player	player;
 	int		game_speed;
 	int		total_eat;
 	int		counter;
@@ -75,9 +75,11 @@ typedef struct s_vars
 	t_map	map_info;
 }			t_vars;
 
+
 int check_up(t_vars *vars);
 int	click_button(int keycode, t_vars *vars);
 int check_right(t_vars *vars);
+void create_angel(t_vars *vars, int wall_x, int wall_y);
 int check_left(t_vars *vars);
 int check_down(t_vars *vars);
 t_vars	*maps_load(t_vars *vars, int where);
@@ -85,5 +87,6 @@ int	close_clik(t_vars *vars);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_vars *vars, int player_x, int player_y);
 void draw_line(t_vars *data, double angle, int line_lenght, long color);
+void	check_position(t_vars *vars);
 
 # endif

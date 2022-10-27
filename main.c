@@ -27,24 +27,44 @@ void create_space(t_vars *vars, int a, int b)
 	int x = 0;
 	int y = 0;
 	
-	vars->spaces.img_ptr = mlx_new_image(vars->mlx, 50, 50);
-	vars->spaces.address = mlx_get_data_addr(vars->spaces.img_ptr, &vars->spaces.bits_per_pixel, &vars->spaces.line_size, &vars->spaces.endian);
-
+	
 
 	while (x < 49)
 	{
 		y = 0;
 		while (y < 49)
 		{
-			my_mlx_pixel_put(&vars->spaces, x, y, 0XFFFFFF);
+			my_mlx_pixel_put(&vars->background, x, y, 0XFFFFFF);
 			y++;
 		}
 		x++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->spaces.img_ptr, a * 50 , b * 50 );
+		vars->background.img_ptr, a * 50 , b * 50 );
 }
 
+
+void create_angel(t_vars *vars, int wall_x, int wall_y)
+{
+	int x = 0;
+	int y = 0;
+	
+	
+	while (x < 1)
+	{
+		y = 0;
+		while (y < 7)
+		{
+			my_mlx_pixel_put(&vars->background, 0, 0, 0XE6ADD8);
+			y++;
+		}
+		x++;
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->background.img_ptr, wall_x + 2 , wall_y - 7 );
+		
+}
+// -7 up +7 down, 
 void create_player(t_vars *vars, int player_x, int player_y)
 {
 
@@ -52,53 +72,53 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	int y = 0;
 
 	
-	while (x < 15)
+	while (x < 5)
 	{
 		y = 0;
-		while (y < 15)
+		while (y < 5)
 		{
-			if (((x > 0 && x < 15)&& (y >0 && y <= 5)) || ((x > 5 && x < 10) && (y > 5 && y < 15) ))
-				my_mlx_pixel_put(&vars->player, x, y, 0XE6ADD8);
-			else
-				my_mlx_pixel_put(&vars->player, x, y, 0XFFFFFF);
+			my_mlx_pixel_put(&vars->background, x, y, 0XE6ADD8);
 			y++;
 		}
 		x++;
 	}
 
-	// float a = (float)30 /180;
-	// draw_line(vars, a *3.14159265359 , 2, 0XE6ADD8);
 
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->player.img_ptr, player_x, player_y);
+		vars->background.img_ptr, player_x, player_y);
+	float a = (float)30 /180;
+	draw_line(vars, a * PI , 10, 0XE6ADD8);
+	// create_angel(vars, vars->player.d_x, vars->player.d_y);
+
+
+
 }
+
 void create_walls(t_vars *vars, int wall_x, int wall_y)
 {
 	int x = 0;
 	int y = 0;
 	
-	vars->walls.img_ptr = mlx_new_image(vars->mlx, 50, 50);
-	vars->walls.address = mlx_get_data_addr(vars->walls.img_ptr, &vars->walls.bits_per_pixel, &vars->walls.line_size, &vars->walls.endian);
-
 
 	while (x < 49)
 	{
 		y = 0;
 		while (y < 49)
 		{
-			my_mlx_pixel_put(&vars->walls, x, y, 0X4C1130);
+			my_mlx_pixel_put(&vars->background, x, y, 0X4C1130);
 			y++;
 		}
 		x++;
 	}
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->walls.img_ptr, wall_x * 50 , wall_y * 50 );
+		vars->background.img_ptr, wall_x * 50 , wall_y * 50 );
 }
 t_vars	*maps_load(t_vars *vars, int where)
 {
 	int	a;
 	int	x;
 
+	where = 0;
 	x = 0;
 	while (vars->map_info.maps[x])
 	{
@@ -118,11 +138,7 @@ t_vars	*maps_load(t_vars *vars, int where)
 				{
 					vars->player.y = vars->image_len * x;
 					vars->player.x = vars->image_len * a;
-					vars->player.img_ptr = mlx_new_image(vars->mlx, 15, 15);
-					vars->player.address = mlx_get_data_addr(vars->player.img_ptr, &vars->player.bits_per_pixel, &vars->player.line_size, &vars->player.endian);
-
 					create_player(vars, vars->player.x, vars->player.y);
-					//////////printf("player size %d\n", vars->player.img_width);
 				}
 			}
 			a++;
