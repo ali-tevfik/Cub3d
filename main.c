@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "cub3d.h"
 
-
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
 {
 	char	*dst;
@@ -11,6 +10,9 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
 	dst = img->address + offset;
 	*(unsigned int *)dst = colour;
 }
+
+
+
 
 void	create_win(t_vars *vars, int x, int y)
 {
@@ -22,103 +24,55 @@ void	create_win(t_vars *vars, int x, int y)
 			&vars->background.line_size, &vars->background.endian);
 }
 
-void create_space(t_vars *vars, int a, int b)
-{
-	int x = 0;
-	int y = 0;
-	
-	
 
-	while (x < 49)
-	{
-		y = 0;
-		while (y < 49)
-		{
-			my_mlx_pixel_put(&vars->background, x, y, 0XFFFFFF);
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, a * 50 , b * 50 );
-}
-
-
-void create_angel(t_vars *vars, int wall_x, int wall_y)
-{
-	int x = 0;
-	int y = 0;
-	
-	
-	while (x < 1)
-	{
-		y = 0;
-		while (y < 7)
-		{
-			my_mlx_pixel_put(&vars->background, 0, 0, 0XE6ADD8);
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, wall_x + 2 , wall_y - 7 );
-		
-}
 // -7 up +7 down, 
 void create_player(t_vars *vars, int player_x, int player_y)
 {
 
-	int x = 0;
-	int y = 0;
-
+	int x = player_x;
+	int y = player_y;
+	printf("player x %d y %d\n",player_x,player_y);
 	
-	while (x < 5)
+	while (player_x > x - 5)
 	{
-		y = 0;
-		while (y < 5)
+		y = player_y;
+		while (y - 5 < player_y)
 		{
 			my_mlx_pixel_put(&vars->background, x, y, 0XE6ADD8);
 			y++;
 		}
 		x++;
 	}
-
-
-	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, player_x, player_y);
-	float a = (float)30 /180;
-	draw_line(vars, a * PI , 10, 0XE6ADD8);
-	// create_angel(vars, vars->player.d_x, vars->player.d_y);
-
+	
+	// float a = (float)90 /180;
+	draw_line(vars, (vars->player.pa / 180 )* PI , 10, 0X00796B);
 
 
 }
-
-void create_walls(t_vars *vars, int wall_x, int wall_y)
+//walls color 0X4C1130
+//space  0XFFFFFF
+void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color)
 {
-	int x = 0;
-	int y = 0;
+	int x = wall_x * 50;
+	int y = wall_y * 50;
 	
 
-	while (x < 49)
+	while (x < (wall_x * 50) + 49)
 	{
-		y = 0;
-		while (y < 49)
+		y = wall_y * 50;
+		while (y < (wall_y * 50) + 49 )
 		{
-			my_mlx_pixel_put(&vars->background, x, y, 0X4C1130);
+			my_mlx_pixel_put(&vars->background, x, y, color);
 			y++;
 		}
 		x++;
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, wall_x * 50 , wall_y * 50 );
 }
 t_vars	*maps_load(t_vars *vars, int where)
 {
 	int	a;
 	int	x;
 
-	where = 0;
 	x = 0;
 	while (vars->map_info.maps[x])
 	{
@@ -126,25 +80,35 @@ t_vars	*maps_load(t_vars *vars, int where)
 		while (vars->map_info.maps[x][a])
 		{
 			if (vars->map_info.maps[x][a] == '0')
-				create_space(vars, a, x);
+				create_elemntry(vars, a, x, 0XFFFFFF);
 			else if (vars->map_info.maps[x][a] == '1')
 			{
-				create_walls(vars, a, x);
+				create_elemntry(vars, a, x, 0X4C1130);
 			}
 			else if (vars->map_info.maps[x][a] == 'P' )
 			{
-				create_space(vars, a, x);
+				create_elemntry(vars, a, x, 0XFFFFFF);
 				if (where == 0)
-				{
-					vars->player.y = vars->image_len * x;
-					vars->player.x = vars->image_len * a;
-					create_player(vars, vars->player.x, vars->player.y);
+				{				
+					vars->player.y = (vars->image_len * x) + 15;
+					vars->player.x = (vars->image_len * a) + 15;
+
+					vars->player.pa = 90;
+					vars->player.d_x = vars->player.x + (cos(30 * PI) * 5);
+					vars->player.d_y = (sin(30 * PI) * 5) + vars->player.y;
+					printf("x %d y %d ,angel value = %f, y value = %f\n",vars->player.x, vars->player.y ,vars->player.d_x, vars->player.d_y);
+
 				}
+
 			}
 			a++;
 		}
 		x++;
 	}
+					create_player(vars, vars->player.x, vars->player.y);
+
+		mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->background.img_ptr, 0, 0);
 	return (vars);
 }
 
@@ -159,6 +123,8 @@ void	start_draw(char **data, t_map *maps_info)
 	vars.map_info.len = maps_info->len;
 	vars.map_info.line = maps_info->line;
 	vars.image_len = 50;
+	vars.player.x = -1;
+	vars.player.y = -1;
 	create_win(&vars, maps_info->len , maps_info->line);
 	maps_load(&vars, 0);
 	mlx_hook(vars.win, 2, 0, click_button, &vars);
@@ -188,4 +154,5 @@ int main()
 	start_draw(map, &maps_info);
 	
 	
-}
+}	
+

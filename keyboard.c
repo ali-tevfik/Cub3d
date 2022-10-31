@@ -4,54 +4,66 @@ void draw_line(t_vars *data, double angle, int line_lenght, long color)
 {
     int x1;
     int y1;
-	int dx = sin(angle) + data->player.x;;
-	int dy = cos(angle) + data->player.y;
+
     for(int i = 0; i < line_lenght; i += 1)
     {
         x1 = i * sin(angle) + data->player.x;
         y1 = i * cos(angle) + data->player.y;
-        if (x1 < 15 * 50 && x1 > 0  && y1 < 6 * 50 && y1 > 0)
-        {
-			my_mlx_pixel_put(&data->background, x1, y1, color);
-    		printf("draw line x value = %d, y value = %d\n", x1, y1);
-		}
+		printf("x %d y %d ,angel value = %f, y value = %f\n",data->player.x, data->player.y ,data->player.d_x, data->player.d_y);	
+        if (x1 < 15 * 50 && x1 > 0  && y1 < 5 * 50 && y1 > 0)
+            my_mlx_pixel_put(&data->background, x1, y1, color);
     }
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->background.img_ptr, dx , dy);
+    // printf("x value = %d, y value = %d\n", x1, y1);
 }
-
+void change_color_pixel(t_vars *vars, int color, int x, int y)
+{
+	int a = 0;
+	int b;
+	while (a < 5)
+	{
+		b = 0;
+		while (b < 5)
+		{
+			my_mlx_pixel_put(&vars->background, a, b, color);
+			b++;
+		}
+		a++;
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->background.img_ptr, x, y);
+	
+}
 
 void clean_maps(t_vars *vars)
 {
-	mlx_clear_window(vars->mlx, vars->win);
-
+	
+    if (vars->background.img_ptr)
+	{
+	mlx_destroy_image(vars->mlx, vars->background.img_ptr);
+	}
+			vars->background.img_ptr = mlx_new_image(vars->mlx, 15 * 50, 5 * 50);
+	vars->background.address = mlx_get_data_addr(vars->background.img_ptr,
+			&vars->background.bits_per_pixel,
+			&vars->background.line_size, &vars->background.endian);
 }
 void	change_position(t_vars *vars, int keycode)
 {
-	// clean_maps(vars);
-	// maps_load(vars, 1);
+	clean_maps(vars);
 	if (keycode == LEFT || keycode == A)
 	{
-		vars->player.x = vars->player.x - vars->game_speed;
-		// vars->player.pa -= 0.1;
-		// if ( vars->player.pa < 0)
-		// 	vars->player.pa += 2 * PI;
-		// vars->player.d_x = cos(vars->player.pa) * 5;
-		// vars->player.d_y = sin(vars->player.pa) * 5;
-		// if (vars->player.d_x < 0)
-		// 	vars->player.d_x = 1;
-		// if (vars->player.d_y < 0)
-		// 	vars->player.d_y = 1;
-		// printf("dx %f dy %f\n", vars->player.d_x, vars->player.d_y);
+		vars->player.pa += 10;
+		vars->player.x -= vars->game_speed;
 	}
 	if (keycode == RIGHT || keycode == D)
-		vars->player.x = vars->player.x + vars->game_speed;
+	{
+		vars->player.x += vars->game_speed;
+		vars->player.pa -= 10;
+	}
 	if (keycode == DOWN || keycode == S)
 		vars->player.y = vars->player.y + vars->game_speed;
 	if (keycode == UP || keycode == W)
 		vars->player.y = vars->player.y - vars->game_speed;
-
-	create_player(vars, vars->player.x, vars->player.y);
+	maps_load(vars, 1);
+	
 
 }
 
