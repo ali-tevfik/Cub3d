@@ -33,10 +33,10 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	int y = player_y;
 	printf("player x %d y %d\n",player_x,player_y);
 	
-	while (player_x > x - 5)
+	while (player_x > x - 3)
 	{
 		y = player_y;
-		while (y - 5 < player_y)
+		while (y - 3 < player_y)
 		{
 			my_mlx_pixel_put(&vars->background, x, y, 0XE6ADD8);
 			y++;
@@ -45,10 +45,15 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	}
 	
 	// float a = (float)90 /180;
-	draw_line(vars, (vars->player.pa / 180 )* PI , 10, 0X00796B);
+	draw_line(vars, vars->player.pa , 8, 0XE6ADD8);
 
 
 }
+
+
+
+
+
 //walls color 0X4C1130
 //space  0XFFFFFF
 void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color)
@@ -68,6 +73,8 @@ void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color)
 		x++;
 	}
 }
+
+float degToRad(int a) { return a*M_PI/180.0;}
 t_vars	*maps_load(t_vars *vars, int where)
 {
 	int	a;
@@ -92,10 +99,10 @@ t_vars	*maps_load(t_vars *vars, int where)
 				{				
 					vars->player.y = (vars->image_len * x) + 15;
 					vars->player.x = (vars->image_len * a) + 15;
-
-					vars->player.pa = 90;
-					vars->player.d_x = vars->player.x + (cos(30 * PI) * 5);
-					vars->player.d_y = (sin(30 * PI) * 5) + vars->player.y;
+				
+					vars->player.pa = 0;
+					vars->player.d_x = (cos(degToRad(vars->player.pa)));
+					vars->player.d_y = (sin(degToRad(vars->player.pa)));
 					printf("x %d y %d ,angel value = %f, y value = %f\n",vars->player.x, vars->player.y ,vars->player.d_x, vars->player.d_y);
 
 				}

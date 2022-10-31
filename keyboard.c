@@ -7,8 +7,8 @@ void draw_line(t_vars *data, double angle, int line_lenght, long color)
 
     for(int i = 0; i < line_lenght; i += 1)
     {
-        x1 = i * sin(angle) + data->player.x;
-        y1 = i * cos(angle) + data->player.y;
+        x1 = (int)(i * sin(angle)) + data->player.d_x + data->player.x + 1;
+        y1 = (int)(i * cos(angle)) + data->player.d_y + data->player.y + 1;
 		printf("x %d y %d ,angel value = %f, y value = %f\n",data->player.x, data->player.y ,data->player.d_x, data->player.d_y);	
         if (x1 < 15 * 50 && x1 > 0  && y1 < 5 * 50 && y1 > 0)
             my_mlx_pixel_put(&data->background, x1, y1, color);
@@ -32,7 +32,7 @@ void change_color_pixel(t_vars *vars, int color, int x, int y)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->background.img_ptr, x, y);
 	
 }
-
+int FixAng(int a){ if(a>359){ a-=360;} if(a<0){ a+=360;} return a;}
 void clean_maps(t_vars *vars)
 {
 	
@@ -50,18 +50,43 @@ void	change_position(t_vars *vars, int keycode)
 	clean_maps(vars);
 	if (keycode == LEFT || keycode == A)
 	{
-		vars->player.pa += 10;
-		vars->player.x -= vars->game_speed;
+		// vars->player.pa += 10;
+		vars->player.pa-=2; 
+		if (vars->player.pa < 0)
+			vars->player.pa += 2 * PI;
+		vars->player.d_x = cos(vars->player.pa) * 5;
+		vars->player.d_y = sin(vars->player.pa) * 5;
+	// 	vars->player.pa=FixAng(vars->player.pa);
+	// 	vars->player.d_x=cos(degToRad(vars->player.pa));
+	// 	vars->player.d_y=-sin(degToRad(vars->player.pa));
+	// 	// vars->player.x -= vars->game_speed;
 	}
 	if (keycode == RIGHT || keycode == D)
 	{
-		vars->player.x += vars->game_speed;
-		vars->player.pa -= 10;
+		// vars->player.x += vars->game_speed;
+		// vars->player.pa -= 10;
+		// vars->player.pa-=5; 
+		// vars->player.pa=FixAng(vars->player.pa);
+		// vars->player.d_x=cos(degToRad(vars->player.pa));
+		// vars->player.d_y=-sin(degToRad(vars->player.pa));
+		
+		vars->player.pa += 2; 
+		if (vars->player.pa > 2 * PI)
+			vars->player.pa -= 2 * PI;
+		vars->player.d_x = cos(vars->player.pa) * 5;
+		vars->player.d_y = sin(vars->player.pa) * 5;
 	}
 	if (keycode == DOWN || keycode == S)
-		vars->player.y = vars->player.y + vars->game_speed;
+	{
+		vars->player.x -= vars->player.d_x;
+		vars->player.y -= vars->player.d_y;
+	} 
 	if (keycode == UP || keycode == W)
-		vars->player.y = vars->player.y - vars->game_speed;
+	{
+		
+		vars->player.x += vars->player.d_x;
+		vars->player.y += vars->player.d_y;
+	}
 	maps_load(vars, 1);
 	
 

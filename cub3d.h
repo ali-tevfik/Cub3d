@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/10/29 22:29:09 by tevfik        ########   odam.nl         */
+/*   Updated: 2022/10/31 17:34:46 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_vars *vars, int player_x, int player_y);
 void draw_line(t_vars *data, double angle, int line_lenght, long color);
 void	check_position(t_vars *vars);
+float degToRad(int a);
 
 # endif
