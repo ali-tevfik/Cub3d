@@ -26,22 +26,23 @@ int check_right(t_vars *vars)
     if (vars->map_info.maps[y][x -1] == '1')
     {
         printf("duvar konumu [%d][%d]\n", y , x - 1);
-        printf("duvar %d player %d\n",(x-1) * 50, vars->player.x);
+        printf("duvar %d player %f\n",(x-1) * 50, vars->player.x);
         return ((x - 1) * 50 > vars->player.x);
     }
     return (vars->player.x + vars->game_speed < len * 50);
 }
 
-int check_walls(int x, int y, t_vars *vars)
+int check_walls(double player_x, double player_y, t_vars *vars)
 {
-    int wall_x;
-    int wall_y;
+    double wall_x;
+    double wall_y;
 
-    wall_x = x / 50;
-    wall_y = y /50;
-    if (vars->map_info.maps[wall_y][wall_x] == '1')
+    wall_x = player_x / 50;
+    wall_y = player_y /50;
+    // printf("walls float %f int %d float %f int %d [%c]\n",wall_x, (int) wall_x,wall_y, (int)wall_y ,vars->map_info.maps[(int)wall_y][(int)wall_x]);
+    if (vars->map_info.maps[(int)wall_y][(int)wall_x] == '1')
         return (FALSE);
-    return (TRUE);
+    return (TRUE);    
 }
 
 int find_ray_len(int x, int y)

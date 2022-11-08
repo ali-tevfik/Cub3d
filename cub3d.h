@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/03 20:57:11 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/08 15:10:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef struct s_map
 }			t_map;
 typedef struct s_player
 {
-	int x;
-	int y;
+	double x;
+	double y;
 	int ray[60];
 	double d_x;
 	double d_y;
@@ -91,7 +91,7 @@ void draw_angle(t_vars *data, double angle, int line_lenght, long color);
 void	check_position(t_vars *vars);
 void clean_maps(t_vars *vars);
 int draw_ray(t_vars *data, double angle, long color);
-int check_walls(int x, int y, t_vars *vars);
+int check_walls(double player_x, double player_y, t_vars *vars);
 void	create_win(t_vars *vars, int x, int y);
 void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);
 int find_ray_len(int x, int y);

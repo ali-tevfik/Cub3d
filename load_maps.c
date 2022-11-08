@@ -25,7 +25,7 @@ t_vars	*maps_load(t_vars *vars, int where)
 					vars->player.y = 200;
 					vars->player.x =200 ;
 				
-					vars->player.pa = 45;
+					vars->player.pa = 2 * M_PI;
 					vars->player.d_x = lround((cos(vars->player.pa)));
 					vars->player.d_y = lround((sin(vars->player.pa)));
 					printf("dx %f dy %f\n",vars->player.d_x, vars->player.d_y);
@@ -38,7 +38,7 @@ t_vars	*maps_load(t_vars *vars, int where)
 		}
 		x++;
 	}
-					create_player(vars, vars->player.x, vars->player.y);
+					create_player(vars, (int) vars->player.x, (int) vars->player.y);
 
 		mlx_put_image_to_window(vars->mlx, vars->win,
 		vars->background.img_ptr, 0, 0);

@@ -30,14 +30,14 @@ void create_player(t_vars *vars, int player_x, int player_y)
 		x++;
 	}
     
-	// int a = 0;
-	// for (double i = -0.3; i < 0.3; i+=0.01)
-	// {
+	int a = 0;
+	for (double i = -0.3; i < 0.3; i+=0.01)
+	{
 	
-	// 	vars->player.ray[a] = draw_ray(vars, vars->player.pa + i, 0XFF0000);
-	// 	a++;
-	// }
-	draw_ray(vars, vars->player.pa, 0XFF0000);
+		vars->player.ray[a] = draw_ray(vars, vars->player.pa + i, 0XFF0000);
+		a++;
+	}
+	// draw_ray(vars, vars->player.pa, 0XFF0000);
 	draw_angle(vars, vars->player.pa , 8, 0X000000);
 
 
