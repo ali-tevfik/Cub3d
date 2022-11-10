@@ -15,20 +15,23 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
 
 
 
+
 void	start_draw(char **data, t_map *maps_info)
 {
 	t_vars	vars;
-
 	vars.game_speed = 10;
 	vars.map_info.maps = data;
 	vars.map_info.len = maps_info->len;
 	vars.map_info.line = maps_info->line;
 	vars.image_len = 50;
-	create_win(&vars, maps_info->len , maps_info->line);
+
+	create_win(&vars);
 	maps_load(&vars, 0);
 	mlx_hook(vars.win, 2, 0, click_button, &vars);
 	mlx_hook(vars.win, 17, 0, close_clik, &vars);
 	mlx_loop(vars.mlx);
+
+
 }
 
 int main()
@@ -77,7 +80,7 @@ int main()
 	map[7] = "111111111111111";
 	map[8] = NULL;
 
-
+	printf("%d %d\n",1%1, (int)1.5%1);
 	//maps3
 	// maps_info.len = 5;
 	// maps_info.line = 10;
@@ -104,6 +107,7 @@ int main()
 	// map[9] = "11111";
 	// map[10] = NULL;
 	start_draw(map, &maps_info);
+
 	
 	
 }	

@@ -39,9 +39,9 @@ t_vars	*maps_load(t_vars *vars, int where)
 		x++;
 	}
 					create_player(vars, (int) vars->player.x, (int) vars->player.y);
-
-		mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->background.img_ptr, 0, 0);
+				    mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->two_D.img_ptr, 0, 0);
+					// draw3Dstart(vars);
 	return (vars);
 }
 

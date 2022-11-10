@@ -32,17 +32,38 @@ int check_right(t_vars *vars)
     return (vars->player.x + vars->game_speed < len * 50);
 }
 
-int check_walls(double player_x, double player_y, t_vars *vars)
-{
-    double wall_x;
-    double wall_y;
 
-    wall_x = player_x / 50;
-    wall_y = player_y /50;
-    // printf("walls float %f int %d float %f int %d [%c]\n",wall_x, (int) wall_x,wall_y, (int)wall_y ,vars->map_info.maps[(int)wall_y][(int)wall_x]);
-    if (vars->map_info.maps[(int)wall_y][(int)wall_x] == '1')
+int check_walls(double ray_x, double ray_y, t_vars *vars)
+{
+    int wall_x;
+    int wall_y;
+
+    wall_x = (ray_x) / 50;
+    wall_y = (ray_y)/50;
+        
+    // // Bram
+    // // if (vars->map_info.maps[wall_y - 1][wall_x - 1])
+    // if (vars->map_info.len > wall_y -1 && wall_x-1 < vars->map_info.line)
+    //     if (vars->map_info.maps[wall_y - 1][wall_x - 1] != '1')
+    //         return (TRUE);
+    // if (vars->map_info.len > wall_y -1 && wall_x+1 < vars->map_info.line)
+    //     if (vars->map_info.maps[wall_y - 1][wall_x + 1] != '1')
+    //         return (TRUE);
+    // if (vars->map_info.len > wall_y +1 && wall_x-1 < vars->map_info.line)
+    //     if (vars->map_info.maps[wall_y + 1][wall_x - 1] != '1')
+    //         return (TRUE);
+    // if (vars->map_info.len > wall_y +1 && wall_x+1 < vars->map_info.line)
+    //     if (vars->map_info.maps[wall_y + 1][wall_x + 1] != '1')
+    //         return (TRUE);
+    // // end Bram
+
+    // printf("x = %d y %d\n",wall_y,wall_x);
+    if (vars->map_info.maps[wall_y][wall_x] == '1')
         return (FALSE);
-    return (TRUE);    
+
+    return (TRUE);  
+
+    // return TRUE;
 }
 
 int find_ray_len(int x, int y)

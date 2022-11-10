@@ -11,7 +11,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			draw_ray.c\
 			clean_maps.c\
 			create_items.c\
-			load_maps.c
+			load_maps.c\
+			draw3D.c
 
 OBJS	= $(SRCS:.c=.o)
 

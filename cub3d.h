@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/08 15:10:56 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/10 18:43:40 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_player
 {
 	double x;
 	double y;
-	int ray[60];
+	int ray[750];
 	double d_x;
 	double d_y;
 	double pa;
@@ -67,12 +67,10 @@ typedef struct s_vars
 	void	*mlx;
 	void	*win;
 	int		image_len;
-	t_img	background;
+	t_img	two_D;
+	t_img	game;
 	t_player	player;
 	int		game_speed;
-	int		total_eat;
-	int		counter;
-	int		ate;
 	t_map	map_info;
 }			t_vars;
 
@@ -91,8 +89,11 @@ void draw_angle(t_vars *data, double angle, int line_lenght, long color);
 void	check_position(t_vars *vars);
 void clean_maps(t_vars *vars);
 int draw_ray(t_vars *data, double angle, long color);
-int check_walls(double player_x, double player_y, t_vars *vars);
-void	create_win(t_vars *vars, int x, int y);
+int check_walls(double ray_x, double ray_y, t_vars *vars);
+void	create_win(t_vars *vars);
 void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);
 int find_ray_len(int x, int y);
+int	my_mlx_pixel_get(t_img *img, int x, int y);
+void draw3Dstart(t_vars *data);
+void walls(t_vars *data);
 # endif
