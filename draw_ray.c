@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int draw_ray(t_vars *data, double angle, long color)
+double draw_ray(t_vars *data, double angle, long color)
 {
     double x1;
     double y1;

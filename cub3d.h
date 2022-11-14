@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/10 18:43:40 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/14 17:48:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define TRUE 1
 # define FALSE 0
 # define PI 3.14159265359
+# define BLACK 0X000000
+# define RED 0Xi00FF00
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -56,7 +58,7 @@ typedef struct s_player
 {
 	double x;
 	double y;
-	int ray[750];
+	double ray[750];
 	double d_x;
 	double d_y;
 	double pa;
@@ -88,7 +90,7 @@ void create_player(t_vars *vars, int player_x, int player_y);
 void draw_angle(t_vars *data, double angle, int line_lenght, long color);
 void	check_position(t_vars *vars);
 void clean_maps(t_vars *vars);
-int draw_ray(t_vars *data, double angle, long color);
+double draw_ray(t_vars *data, double angle, long color);
 int check_walls(double ray_x, double ray_y, t_vars *vars);
 void	create_win(t_vars *vars);
 void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);

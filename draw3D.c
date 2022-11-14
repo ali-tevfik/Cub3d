@@ -1,42 +1,5 @@
 #include "cub3d.h"
 
-
-
-void up(t_vars *data )
-{
-    int x = 0;
-    int y = 450;
-    while (x < 1000)
-    {
-        y = 450;
-        while (y < 550)
-        {
-            my_mlx_pixel_put(&data->two_D, x, y, 0X00FFFF);
-            y++;
-        }
-        
-        x++;
-    }
-    
-}
-
-void down(t_vars *data )
-{
-    int x = 0;
-    int y ;
-    while (x < 1000)
-    {
-        y = 900;
-        while (y < 1000)
-        {
-            my_mlx_pixel_put(&data->two_D, x, y, 0X00FF00);
-            y++;
-        }
-        
-        x++;
-    }
-    
-}
 //450-10000
 void walls(t_vars *data)
 {
@@ -60,23 +23,34 @@ void walls(t_vars *data)
             // printf("heigh %d\n",height);
             while (y < finish)
             {
+                //up
                 if (y < half)
-                    my_mlx_pixel_put(&data->two_D, i ,y, 0X00FFFF);
-                else
-                    my_mlx_pixel_put(&data->two_D, i ,y, 0X00FF00);
+                    my_mlx_pixel_put(&data->two_D, i ,y, BLACK);
+                else //down
+                    my_mlx_pixel_put(&data->two_D, i ,y, BLACK);
                 y++;
             }
             x = 0;
           
-            while (half_height > x)
+            //up walls
+            while (half_height > x && half - x < finish && half - x > start)
             {
-                my_mlx_pixel_put(&data->two_D, i ,half- x, 0XFFFF00);
+                if (data->player.ray[i] > 100)
+                    my_mlx_pixel_put(&data->two_D, i ,half - x, RED / 2);
+                else
+                    my_mlx_pixel_put(&data->two_D, i ,half - x, RED);
                 x++;
             }
             x = 0;
-            while (height > half_height)
+            //down walls
+            while (height > half_height && half + x < finish && half + x > start)
             {
-                my_mlx_pixel_put(&data->two_D, i ,half + x, 0XFFE599);
+                if (data->player.ray[i] > 100)
+                    my_mlx_pixel_put(&data->two_D, i ,half + x, RED / 2);
+                else
+                    my_mlx_pixel_put(&data->two_D, i ,half + x, RED);
+                    
+
                 half_height++;
                 x++;
             }
@@ -90,16 +64,6 @@ void walls(t_vars *data)
 
 void draw3Dstart(t_vars *data)
 {
-    // int start = 450;
-    // int max = 100;
-    // up(data);
-    // down(data);
+  
     walls(data);
-    // for (int i = 0; i < data->player.ray[i]; i++)
-    // {
-    //     printf("data %d\n",data->player.ray[i]);
-    // }
-    // printf("-------------------\n");
-    
-    // data->map_info.collection = 0;
 }
