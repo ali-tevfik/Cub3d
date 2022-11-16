@@ -33,7 +33,7 @@ void create_player(t_vars *vars, int player_x, int player_y)
 	int a = 0;
 	for (double i = -0.3; i < 0.3; i+=0.0008)
 	{
-		vars->player.ray[a] = draw_ray(vars, vars->player.pa + i, 0XFF0000);
+		vars->player.ray[a] = draw_ray(vars, vars->player.pa + i, 0XFF0000);//* cos(vars->player.pa + i);
 		a++;
 		// printf("---------------------\n");
 

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/14 17:48:29 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/15 11:39:12 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define FALSE 0
 # define PI 3.14159265359
 # define BLACK 0X000000
-# define RED 0Xi00FF00
+# define RED 0X00FF00
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -94,7 +94,7 @@ double draw_ray(t_vars *data, double angle, long color);
 int check_walls(double ray_x, double ray_y, t_vars *vars);
 void	create_win(t_vars *vars);
 void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);
-int find_ray_len(int x, int y);
+double find_ray_len(double x, double y);
 int	my_mlx_pixel_get(t_img *img, int x, int y);
 void draw3Dstart(t_vars *data);
 void walls(t_vars *data);

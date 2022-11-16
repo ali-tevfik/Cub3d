@@ -8,8 +8,8 @@ double draw_ray(t_vars *data, double angle, long color)
 	double len;
 	double oldx;
 	double oldy;
-	oldx = (int)(i * cos(angle)) + data->player.x;
-    oldy = (int)(i * sin(angle)) + data->player.y;
+	oldx = (i * cos(angle)) + data->player.x;
+    oldy = (i * sin(angle)) + data->player.y;
 	// printf("angel %f\n",angle);
     while(1)
     {
@@ -35,6 +35,7 @@ double draw_ray(t_vars *data, double angle, long color)
     }
 	// printf("new x %d - old x %d = %d. and new y %d - old y %d = %d\n",x1,oldx, x1-oldx, y1,oldy, y1-oldy);
 	len = find_ray_len(x1-oldx, y1-oldy);
+	// printf("len %f\n",len);
 	return (len);
 }
 

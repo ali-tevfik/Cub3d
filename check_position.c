@@ -45,12 +45,8 @@ int check_walls(double ray_x, double ray_y, t_vars *vars)
     return (TRUE);  
 }
 
-int find_ray_len(int x, int y)
+double find_ray_len(double x, double y)
 {
-    if (x == 0)
-        return (abs(y));
-    else if (y == 0)
-        return (abs(x));
-    int result = (x * x) + (y * y);
+    double result = (x * x) + (y * y);
     return (sqrt(result));
 }

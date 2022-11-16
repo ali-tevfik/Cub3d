@@ -5,18 +5,18 @@ void walls(t_vars *data)
 {
     int y;
 
-    int height;
+    double height;
     int start = 400;
     int finish = 1000;
     int half = 700;
     int ray_stuk = 750;
     int i = 0;
-    int half_height;
+    double half_height;
     int x;
     while(i < ray_stuk)
     {
-        height = ray_stuk/ data->player.ray[i]  *10;
-        // printf("heigh %d\n",height);
+        height = (double)50/ data->player.ray[i]  *377;
+        printf("ray %f\n",data->player.ray[i]);
         half_height = height / 2;
        
             y = start;
