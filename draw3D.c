@@ -16,7 +16,7 @@ void walls(t_vars *data)
     while(i < ray_stuk)
     {
         height = (double)50/ data->player.ray[i]  *377;
-        printf("ray %f\n",data->player.ray[i]);
+        // printf("ray %f\n",data->player.ray[i]);
         half_height = height / 2;
        
             y = start;
