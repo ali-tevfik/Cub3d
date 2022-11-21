@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   form_grid.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:20 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   form_grid.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:20:36 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "form_grid.h"
-#include "check_map_borders.h"
-#include "map_utils.h"
-#include "gnl.h"
+#include "../includes/form_grid.h"
+#include "../includes/check_map_borders.h"
+#include "../includes/map_utils.h"
+#include "../includes/gnl.h"
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/uio.h>

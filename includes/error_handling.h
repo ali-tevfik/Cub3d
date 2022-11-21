@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   error_handling.h                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:47:00 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:48:09 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   error_handling.h                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:47:00 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/21 12:43:11 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_HANDLING_H
 # define ERROR_HANDLING_H
+
 
 typedef enum e_boolean
 {

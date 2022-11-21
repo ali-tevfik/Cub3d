@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initiate_data.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:25 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:27 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   initiate_data.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:25 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:20:43 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initiate_data.h"
-#include "parsing_gamestate.h"
+#include "../includes/initiate_data.h"
+#include "../includes/parsing_gamestate.h"
 #include <stdlib.h>
 
 t_flags	initiate_flags(void)

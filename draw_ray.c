@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int find_y(double y1, double angel)
+int finy_camera(double y1, double angel)
 {
     int next_y;
 
@@ -11,7 +11,7 @@ int find_y(double y1, double angel)
     return (next_y);
 }
 
-int find_x(double x1, double angel)
+int finx_camera(double x1, double angel)
 {
     int next_x;
 
@@ -23,7 +23,7 @@ int find_x(double x1, double angel)
 }
 
 
-double draw_ray(t_vars *data, double angle, long color)
+double draw_ray(t_parsing_result *data, double angle, long color)
 {
     double x1;
     double y1;
@@ -41,10 +41,10 @@ double draw_ray(t_vars *data, double angle, long color)
         
         x1 = (i * cos(angle)) + data->player.x + 1;
         y1 = (i * sin(angle)) + data->player.y + 1;
-        if (x1 < data->map_info.len * 50.0 && x1 > 0 && y1 < data->map_info.line * 50.0 && y1 > 0)
+        if (x1 < data->len_rows* 50.0 && x1 > 0 && y1 < data->len_cols * 50.0 && y1 > 0)
         {
-                map_x = find_x(x1, angle);
-                map_y = find_y(y1, angle);
+                map_x = finx_camera(x1, angle);
+                map_y = finy_camera(y1, angle);
             if (check_walls(map_x, map_y, data))
             {
                 while (map_x > map_y && map_x > x1)
@@ -96,12 +96,12 @@ double draw_ray(t_vars *data, double angle, long color)
             i += 0.01;
         }
     // printf("new x %d - old x %d = %d. and new y %d - old y %d = %d\n",x1,oldx, x1-oldx, y1,oldy, y1-oldy);
-    len = find_ray_len(x1 - oldx, y1 - oldy);
-    // printf("len %f\n",len);
+    len= find_ray_len(x1 - oldx, y1 - oldy);
+    // printf("len_rows%f\n",len);
     return (len);
 }
 
-void draw_angle(t_vars *data, double angle, int line_lenght, long color)
+void draw_angle(t_parsing_result *data, double angle, int line_lenght, long color)
 {
     double x1;
     double y1;
@@ -110,8 +110,8 @@ void draw_angle(t_vars *data, double angle, int line_lenght, long color)
     {
         x1 = (i * cos(angle)) + data->player.x + 1;
         y1 = (i * sin(angle)) + data->player.y + 1;
-        // printf("x %d y %d ,angel value = %f, y value = %f\n",data->player.x, data->player.y ,data->player.d_x, data->player.d_y);
-        if (x1 < data->map_info.len * 50 && x1 > 0 && y1 < data->map_info.line * 50 && y1 > 0)
+        // printf("x %d y %d ,angel value = %f, y value = %f\n",data->player.x, data->player.y ,data->player.x_camera, data->player.y_camera);
+        if (x1 < data->len_rows* 50 && x1 > 0 && y1 < data->len_cols * 50 && y1 > 0)
             my_mlx_pixel_put(&data->two_D, x1, y1, color);
     }
     // printf("x value = %d, y value = %d\n", x1, y1);

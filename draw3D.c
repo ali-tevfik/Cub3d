@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 //450-10000
-void walls(t_vars *data)
+void walls(t_parsing_result *data)
 {
     int y;
 
@@ -62,7 +62,7 @@ void walls(t_vars *data)
 }
 
 
-void draw3Dstart(t_vars *data)
+void draw3Dstart(t_parsing_result *data)
 {
   
     walls(data);

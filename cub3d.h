@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/16 18:50:41 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/21 12:56:39 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 #include <math.h>
 # include "libft/libft.h"
+#include "includes/parsing_gamestate.h"
 
 # define ESC 53
 # define UP 126
@@ -34,68 +35,63 @@
 # define PI 3.14159265359
 # define BLACK 0X000000
 # define RED 0X00FF00
-typedef struct s_img
-{
-	void	*img_ptr;
-	char	*address;
-	int		bits_per_pixel;
-	int		line_size;
-	int		len_height;
-	int		img_width;
-	int		endian;
-}			t_img;
-
-typedef struct s_map
-{
-	int		player;
-	int		collection;
-	int		exit;
-	int		line;
-	int		len;
-	char	**maps;
-}			t_map;
-typedef struct s_player
-{
-	double x;
-	double y;
-	double ray[750];
-	double d_x;
-	double d_y;
-	double pa;
-}				t_player;
-
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-	int		image_len;
-	t_img	two_D;
-	t_img	game;
-	t_player	player;
-	int		game_speed;
-	t_map	map_info;
-}			t_vars;
+// typedef struct s_img
+// {
+// 	void	*img_ptr;
+// 	char	*address;
+// 	int		bits_per_pixel;
+// 	int		line_size;
+// 	int		len_height;
+// 	int		img_width;
+// 	int		endian;
+// }			t_img;
 
 
-int check_up(t_vars *vars);
-int	click_button(int keycode, t_vars *vars);
-int check_right(t_vars *vars);
-void create_angel(t_vars *vars, int wall_x, int wall_y);
-int check_left(t_vars *vars);
-int check_down(t_vars *vars);
-t_vars	*maps_load(t_vars *vars, int where);
-int	close_clik(t_vars *vars);
+
+// typedef struct s_plr
+// {
+// 	double x;
+// 	double y;
+// 	double ray[750];
+// 	double x_camera;
+// 	double y_camera;
+// 	double pa;
+// }				t_plr;
+
+// typedef struct s_data
+// {
+// 	void	*mlx;
+// 	void	*win;
+// 	t_img	two_D;
+// 	t_img	game;
+// 	t_plr	player;
+// 	int		len_cols;
+// 	int		len_rows;
+// 	char	**maps;
+// }			t_parsing_result;
+
+
+int check_up(t_parsing_result *data);
+int	click_button(int keycode, t_parsing_result *data);
+int check_right(t_parsing_result *data);
+void create_angel(t_parsing_result *data, int wall_x, int wall_y);
+int check_left(t_parsing_result *data);
+int check_down(t_parsing_result *data);
+t_parsing_result	*maps_load(t_parsing_result *data, int where);
+int	close_clik(t_parsing_result *data);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
-void create_player(t_vars *vars, int player_x, int player_y);
-void draw_angle(t_vars *data, double angle, int line_lenght, long color);
-void	check_position(t_vars *vars);
-void clean_maps(t_vars *vars);
-double draw_ray(t_vars *data, double angle, long color);
-int check_walls(double ray_x, double ray_y, t_vars *vars);
-void	create_win(t_vars *vars);
-void create_elemntry(t_vars *vars, int wall_x, int wall_y, int color);
+void create_player(t_parsing_result *data, int player_x, int player_y);
+void draw_angle(t_parsing_result *data, double angle, int line_lenght, long color);
+void	check_position(t_parsing_result *data);
+void clean_maps(t_parsing_result *data);
+double draw_ray(t_parsing_result *data, double angle, long color);
+int check_walls(double ray_x, double ray_y, t_parsing_result *data);
+void	create_win(t_parsing_result *data);
+void create_elemntry(t_parsing_result *data, int wall_x, int wall_y, int color);
 double find_ray_len(double x, double y);
 int	my_mlx_pixel_get(t_img *img, int x, int y);
-void draw3Dstart(t_vars *data);
-void walls(t_vars *data);
+void draw3Dstart(t_parsing_result *data);
+void walls(t_parsing_result *data);
+void	start_draw( t_parsing_result *data);
+void	move(t_parsing_result *data, int keycode);
 # endif

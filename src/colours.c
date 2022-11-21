@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   colours.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:54:29 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   colours.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:51:50 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:22:46 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colours.h"
-#include "map_utils.h"
-#include "error_handling.h"
-#include "libft.h"
+#include "../includes/colours.h"
+#include "../includes/map_utils.h"
+#include "../includes/error_handling.h"
+#include "../libft/libft.h"
 
 unsigned int	color_maker(int red, int green, int blue, t_data *data)
 {
 	int	transperant;
-
+	//unused data???
+	data = NULL;
 	transperant = 0;
 	if ((red >= 0 && red <= 255) && (green >= 0 && green <= 255)
 		&& (blue >= 0 && blue <= 255))
@@ -69,7 +70,7 @@ int	digit_pattern(const char *str)
 
 void	is_valid_color_input(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (is_maze_space(str[i]))

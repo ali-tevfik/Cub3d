@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initiate_map_size.h                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:50:04 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:50:20 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   initiate_map_size.h                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:50:04 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/21 12:43:06 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define INITIATE_MAP_SIZE_H
 
 # include "error_handling.h"
+
 
 typedef	struct 	s_map_size
 {

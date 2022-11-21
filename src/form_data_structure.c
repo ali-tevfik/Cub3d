@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   form_data_structure.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:11 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:13 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   form_data_structure.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:11 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:20:22 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "form_data_structure.h"
-#include "colours.h"
-#include "textures.h"
-#include "gnl.h"
-#include "map_utils.h"
+#include "../includes/form_data_structure.h"
+#include "../includes/colours.h"
+#include "../includes/textures.h"
+#include "../includes/gnl.h"
+#include "../includes/map_utils.h"
 #include <stdlib.h>
 
 int	is_string_maze(char *str)

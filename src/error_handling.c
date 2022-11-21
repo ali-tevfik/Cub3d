@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:51:59 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:00 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   error_handling.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:51:59 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/20 16:20:03 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error_handling.h"
+#include "../includes/error_handling.h"
 #include <stdio.h>
 #include <stdlib.h>
 

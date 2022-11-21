@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:53:03 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   textures.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:53:01 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/21 12:47:08 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "textures.h"
-#include "colours.h"
-#include "map_utils.h"
-#include "error_handling.h"
-#include "libft.h"
+#include "../includes/textures.h"
+#include "../includes/colours.h"
+#include "../includes/map_utils.h"
+#include "../includes/error_handling.h"
+#include "../libft/libft.h"
 #include <fcntl.h>
 
 int	str_cmpr_till_n(const char *str, const char *example, int n)

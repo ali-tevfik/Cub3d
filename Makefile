@@ -12,7 +12,18 @@ SRCS	=	get_next_line/get_next_line.c\
 			clean_maps.c\
 			create_items.c\
 			load_maps.c\
-			draw3D.c
+			draw3D.c\
+			src/check_map_borders.c\
+			src/colours.c\
+			src/error_handling.c\
+			src/exam_gnl.c\
+			src/form_data_structure.c\
+			src/form_grid.c\
+			src/initiate_data.c\
+			src/initiate_map_size.c\
+			src/map_utils.c\
+			src/parsing_gamestate.c\
+			src/textures.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -26,7 +37,8 @@ GCC		= gcc
 
 FLAGS	= -Wall -Wextra -Werror
 
-HEADER_FILE = cub3d.h
+HEADER_FILE =	cub3d.h\
+				includes
 
 MLX_DIR	= minilibx_opengl
 

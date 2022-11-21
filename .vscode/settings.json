@@ -11,6 +11,18 @@
         "__bit_reference": "c",
         "bitset": "c",
         "chrono": "c",
-        "unordered_map": "c"
+        "unordered_map": "c",
+        "check_map_borders.h": "c",
+        "unistd.h": "c",
+        "map_utils.h": "c",
+        "stdlib.h": "c",
+        "parsing_gamestate.h": "c",
+        "stdio.h": "c",
+        "textures.h": "c",
+        "colours.h": "c",
+        "fcntl.h": "c",
+        "initiate_map_size.h": "c",
+        "gnl.h": "c",
+        "form_data_structure.h": "c"
     }
 }

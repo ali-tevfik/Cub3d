@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initiate_map_size.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:32 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:33 by yuliia           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   initiate_map_size.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:32 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/11/21 12:45:46 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initiate_map_size.h"
-#include "libft.h"
-#include "gnl.h"
-#include "form_data_structure.h"
-#include "map_utils.h"
+#include "../includes/initiate_map_size.h"
+#include "../libft/libft.h"
+#include "../includes/gnl.h"
+#include "../includes/form_data_structure.h"
+#include "../includes/map_utils.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -74,8 +74,8 @@ int	is_string_maze_part_of_map(char *str, t_map_size *map_size)
 
 int	get_longest_col_increase_row(char *str, t_map_size *map_size)
 {
-	if (map_size->len_cols < ft_strlen(str))
-		map_size->len_cols = ft_strlen(str);
+	if (map_size->len_cols < (int)ft_strlen(str))
+		map_size->len_cols = (int)ft_strlen(str);
 	map_size->len_rows++;
 	return (0);
 }

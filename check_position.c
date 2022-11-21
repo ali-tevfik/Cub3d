@@ -1,46 +1,46 @@
 #include "cub3d.h"
 
-int check_up(t_vars *vars)
-{
-    return(50 < vars->player.y);
-}
+// int check_up(t_parsing_result *data)
+// {
+//     return(50 < data->player.y);
+// }
 
-int check_down(t_vars *vars)
-{
-    int down = vars->map_info.line - 1;
-    return ((down * 50) > vars->player.y + vars->game_speed);
-}
+// int check_down(t_parsing_result *data)
+// {
+//     int down = data->map_info.len_cols - 1;
+//     return ((down * 50) > data->player.y + data->game_speed);
+// }
 
-int check_left(t_vars *vars)
-{
-    return (vars->player.x > 50);
-}
+// int check_left(t_parsing_result *data)
+// {
+//     return (data->player.x > 50);
+// }
 
-//result = check_position(vars, 0, -1);
-int check_right(t_vars *vars)
-{
-    int x = vars->player.x /50;
-    int y = vars->player.y /50;
-    int len = vars->map_info.len - 1;
+// //result = check_position(data, 0, -1);
+// int check_right(t_parsing_result *data)
+// {
+//     int x = data->player.x /50;
+//     int y = data->player.y /50;
+//     int len_rows= data->map_info.len_rows- 1;
     
-    if (vars->map_info.maps[y][x -1] == '1')
-    {
-        printf("duvar konumu [%d][%d]\n", y , x - 1);
-        printf("duvar %d player %f\n",(x-1) * 50, vars->player.x);
-        return ((x - 1) * 50 > vars->player.x);
-    }
-    return (vars->player.x + vars->game_speed < len * 50);
-}
+//     if (data->map_info.maps[y][x -1] == '1')
+//     {
+//         printf("duvar konumu [%d][%d]\n", y , x - 1);
+//         printf("duvar %d player %f\n",(x-1) * 50, data->player.x);
+//         return ((x - 1) * 50 > data->player.x);
+//     }
+//     return (data->player.x + data->game_speed < len_rows* 50);
+// }
 
 
-int check_walls(double ray_x, double ray_y, t_vars *vars)
+int check_walls(double ray_x, double ray_y, t_parsing_result *data)
 {
     double wall_x;
     double wall_y;
 
     wall_x = (ray_x) / 50;
     wall_y = (ray_y)/50;
-    if (vars->map_info.maps[(int)wall_y][(int)wall_x] == '1')
+    if (data->map[(int)wall_y][(int)wall_x] == '1')
         return (FALSE);
     return (TRUE);  
 }
