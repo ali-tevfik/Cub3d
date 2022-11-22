@@ -14,14 +14,15 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
 
 
 
-
-
-
 void	start_draw( t_parsing_result *data)
 {
 
 	create_win(data);
-	maps_load(data, 0);
+	//2d and 3d
+	// maps_load(data, 0);
+	//just 3d
+	draw_3d(data);
+
 	mlx_hook(data->win, 2, 0, click_button, data);
 	mlx_hook(data->win, 17, 0, close_clik, data);
 	mlx_loop(data->mlx);
@@ -34,6 +35,9 @@ int main(int argc, const char **argv)
 	t_parsing_result data;
 
 	data = parsing(argv, argc);
+	data.player.x *= 50;
+	data.player.y *= 50;
+	printf("player x %f y %f\n",data.player.x, data.player.y);
 	start_draw(&data);
 
 	

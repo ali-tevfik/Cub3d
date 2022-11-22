@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/21 12:56:39 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/21 17:58:11 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define FALSE 0
 # define PI 3.14159265359
 # define BLACK 0X000000
+# define BLAUW 0X0000FF
 # define RED 0X00FF00
 // typedef struct s_img
 // {
@@ -93,5 +94,7 @@ int	my_mlx_pixel_get(t_img *img, int x, int y);
 void draw3Dstart(t_parsing_result *data);
 void walls(t_parsing_result *data);
 void	start_draw( t_parsing_result *data);
+double len_find(t_parsing_result *data, double angle);
 void	move(t_parsing_result *data, int keycode);
+void draw_3d(t_parsing_result *data);
 # endif

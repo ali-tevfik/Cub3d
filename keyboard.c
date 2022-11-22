@@ -57,7 +57,8 @@ void	move(t_parsing_result *data, int keycode)
 
 	}
 
-	maps_load(data, 1);
+	// maps_load(data, 1);
+	draw_3d(data);
 	
 
 }

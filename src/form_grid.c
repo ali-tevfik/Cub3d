@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/20 16:20:36 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/21 18:16:04 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+#include "../cub3d.h"
 
 char	**malloc_arr(int row, int col)
 {
@@ -45,26 +46,19 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 	gstate->map[grid->ri][grid->ci] = FLOOR;
 	gstate->player.x = grid->ci;
 	gstate->player.y = grid->ri;
+	gstate->player.hitX = 0;
+	gstate->player.hitX = 0;
 	if (c == 'N')
-	{
-		gstate->player.x_view_direction = grid->ci;
-		gstate->player.y_view_direction = grid->ri - 1;
-	}
+		gstate->player.pa = 3 * M_PI / 2;
 	else if (c == 'S')
-	{
-		gstate->player.x_view_direction = grid->ci;
-		gstate->player.y_view_direction = grid->ri + 1;
-	}
+		gstate->player.pa = M_PI / 2;
+
 	else if (c == 'E')
-	{
-		gstate->player.x_view_direction = grid->ci + 1;
-		gstate->player.y_view_direction = grid->ri;
-	}
+		gstate->player.pa = 2 * M_PI;
 	else if (c == 'W')
-	{
-		gstate->player.x_view_direction = grid->ci - 1;
-		gstate->player.y_view_direction = grid->ri;
-	}
+		gstate->player.pa = M_PI;
+	gstate->player.x_view_direction = cos(gstate->player.pa) * 5;
+	gstate->player.y_view_direction = sin(gstate->player.pa) * 5;
 }
 
 void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)

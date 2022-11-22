@@ -29,6 +29,7 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 		}
 		x++;
 	}
+	draw_angle(data, data->player.pa , 8, 0X000000);
     
 	int a = 0;
 	for (double i = -0.3; i < 0.3; i+=0.0008)
@@ -40,12 +41,11 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 		// printf("---------------------\n");
 
 	}
-	// printf("a %d var %d\n",a,data->player.ray[a -1]);
-	// data->player.ray[a] = -1;
-	// draw_ray(data, data->player.pa, 0XFF0000);
-	draw3Dstart(data);
-	draw_angle(data, data->player.pa , 8, 0X000000);
 
+    mlx_put_image_to_window(data->mlx, data->win,
+                            data->two_D.img_ptr, 0, 0);
+	// draw3Dstart(data);
+	
 }
 
 

@@ -6,21 +6,25 @@ void walls(t_parsing_result *data)
     int y;
 
     double height;
-    int start = 400;
+    int start = 0;
     int finish = 1000;
-    int half = 700;
+    int half = (finish - start) /2;
     int ray_stuk = 750;
     int i = 0;
     double half_height;
     int x;
     while(i < ray_stuk)
     {
-        height = (double)50/ data->player.ray[i]  *377;
-        // printf("ray %f\n",data->player.ray[i]);
+        height = ((double)750 / ( 50 * data->player.ray[i]));
+        // height = 750 * data->player.ray[i];
+        printf("heih %f %f %f %f\n",height, data->player.ray[i],data->player.x, data->player.y);
+        if (height > 750)
+            height = 750;
+        if (height < 0)
+            height = 0;
         half_height = height / 2;
-       
+
             y = start;
-            // printf("heigh %d\n",height);
             while (y < finish)
             {
                 //up
@@ -66,4 +70,7 @@ void draw3Dstart(t_parsing_result *data)
 {
   
     walls(data);
+
+    mlx_put_image_to_window(data->mlx, data->win,
+                            data->two_D.img_ptr, 0, 0);
 }
