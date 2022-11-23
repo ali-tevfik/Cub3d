@@ -59,10 +59,3 @@ void walls(t_parsing_result *data, int i)
 
 
 
-void draw3Dstart(t_parsing_result *data)
-{
-  
-    // walls(data,0);
-    data->fd_ea = 0;
-
-   }

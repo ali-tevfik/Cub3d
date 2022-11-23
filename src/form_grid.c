@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/23 18:06:44 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/23 18:58:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+#include <math.h>
 #include "../cub3d.h"
 
 char	**malloc_arr(int row, int col)
@@ -111,7 +116,7 @@ int	form_grid(int fd, t_game_state *gstate)
 		}
 		grid.ri++;
 	}
-	if (grid.next_line_flag != grid.rn)
+	if (grid.next_line_flag != grid.rn - 1)
 		error_message_exit(ERR_MAP);
 	check_map_for_boarders(&grid);
 	return (0);

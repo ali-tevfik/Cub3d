@@ -1,0 +1,7 @@
++ error in input if after map is no newline - look into into
++ only .cub maps accepted
+
++ textures path is needed not FD
++ ./bla bla - dot/ is not part of iudentifier
+
++ only .png files textures are accepted

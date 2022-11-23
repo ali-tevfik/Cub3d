@@ -37,6 +37,9 @@ NAME	= cub3d
 GCC		= gcc
 
 FLAGS	= -Wall -Wextra -Werror -g
+# FLAGS	= -Wall -Wextra
+# #-Werror
+# >>>>>>> d70ab1430d72886f6931f085304feb0f281a2489
 
 HEADER_FILE =	cub3d.h\
 				includes
