@@ -35,8 +35,9 @@ int main(int argc, const char **argv)
 	t_parsing_result data;
 
 	data = parsing(argv, argc);
-	data.player.x *= 50;
-	data.player.y *= 50;
+	data.player.x += 0.5;
+	data.player.y += 0.5;
+
 	printf("player x %f y %f\n",data.player.x, data.player.y);
 	start_draw(&data);
 
