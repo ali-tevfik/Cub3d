@@ -36,8 +36,11 @@ void	move(t_parsing_result *data, int keycode)
 	{
 		printf("\n DOWN\n--------------------\n");
 		printf("angle befor = %f\n", data->player.pa / (M_PI));
-		data->player.x -= data->player.x_camera;
-		data->player.y -= data->player.y_camera;
+		// data->player.x -= data->player.x_camera;
+		// data->player.y -= data->player.y_camera;
+
+		data->player.x -= 0.1 * fabs(cos(data->player.pa));
+		data->player.y -= 0.1 * fabs(sin(data->player.pa));
 		printf("angel %f\n",data->player.pa  / (M_PI));
 		printf("down_d %f %f\n",data->player.x_camera, data->player.y_camera);
 		printf("down %f %f\n",data->player.x, data->player.y);
@@ -48,8 +51,11 @@ void	move(t_parsing_result *data, int keycode)
 		printf("\n UP\n--------------------\n");
 
 		printf(" before angle = %f\n", data->player.pa / (M_PI));
-		data->player.x += data->player.x_camera;
-		data->player.y += data->player.y_camera;
+		// data->player.x += data->player.x_camera;
+		// data->player.y += data->player.y_camera;
+printf("beforeup %f %f\n",data->player.x, data->player.y);
+		data->player.x += 0.1 * fabs(cos(data->player.pa));
+		data->player.y += 0.1 * fabs(sin(data->player.pa));
 		printf("angle = %f\n", data->player.pa / (M_PI));
 
 		printf("up_d %f %f\n",data->player.x_camera, data->player.y_camera);

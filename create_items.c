@@ -31,16 +31,16 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 	}
 	draw_angle(data, data->player.pa , 8, 0X000000);
     
-	int a = 0;
-	for (double i = -0.3; i < 0.3; i+=0.0008)
-	{
-		data->player.ray[a] = draw_ray(data, data->player.pa + i, 0XFF0000);
-		// double ca = fabs(i);
-		// data->player.ray[a] = data->player.ray[a] * cos(ca);
-		a++;
-		// printf("---------------------\n");
+	// int a = 0;
+	// for (double i = -0.3; i < 0.3; i+=0.0008)
+	// {
+	// 	data->player.ray[a] = draw_ray(data, data->player.pa + i, 0XFF0000);
+	// 	// double ca = fabs(i);
+	// 	// data->player.ray[a] = data->player.ray[a] * cos(ca);
+	// 	a++;
+	// 	// printf("---------------------\n");
 
-	}
+	// }
 
     mlx_put_image_to_window(data->mlx, data->win,
                             data->two_D.img_ptr, 0, 0);

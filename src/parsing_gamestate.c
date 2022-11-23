@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:56 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/23 13:18:50 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/23 18:07:20 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 void	camera_resolution(t_game_state *gstate)
 {
-	gstate->player.x_camera = 0;
-	gstate->player.y_camera = 0.66;
+	gstate->player.x_camera = cos (gstate->player.pa);
+	gstate->player.y_camera = sin(gstate->player.pa);
 }
 
 t_game_state	form_gamestate(const char *file_name)

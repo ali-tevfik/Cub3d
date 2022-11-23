@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 //450-10000
-void walls(t_parsing_result *data)
+void walls(t_parsing_result *data, int i)
 {
     int y;
 
@@ -10,15 +10,16 @@ void walls(t_parsing_result *data)
     int finish = 1000;
     int half = (finish - start) /2;
     // int ray_stuk = 750;
-    int i = 0;
+    
     double half_height;
     int x;
-    // while(i < ray_stuk)
-    // {
-        // height = ((double)750 / ( 50 * data->player.ray[i]));
-        height = 750 * data->player.ray[0];
-        printf("data %f\n",data->player.ray[0]);
-        // printf("heih %f %f %f %f\n",height, data->player.ray[i],data->player.x, data->player.y);
+
+        height = 1000 / data->player.ray; 
+        // height = ((double)750 / ( 50 * data->player.ray));
+        // height = 750 * data->player.ray[0];
+        // printf("data %f\n",data->player.ray[0]);
+        // printf("heih %f %f %f %f\n",height, data->player.ray,data->player.x, data->player.y);
+        // printf("heighy %f\n",height);
         if (height > 750)
             height = 750;
         if (height < 0)
@@ -30,9 +31,9 @@ void walls(t_parsing_result *data)
             {
                 //up
                 if (y < half)
-                    my_mlx_pixel_put(&data->two_D, i ,y, BLACK);
+                    my_mlx_pixel_put(&data->two_D, i ,y, 0XF08080);
                 else //down
-                    my_mlx_pixel_put(&data->two_D, i ,y, BLACK);
+                    my_mlx_pixel_put(&data->two_D, i ,y, 0XF08080);
                 y++;
             }
             x = 0;
@@ -40,22 +41,14 @@ void walls(t_parsing_result *data)
             //up walls
             while (half_height > x && half - x < finish && half - x > start)
             {
-                if (data->player.ray[i] > 100)
-                    my_mlx_pixel_put(&data->two_D, i ,half - x, RED / 2);
-                else
-                    my_mlx_pixel_put(&data->two_D, i ,half - x, RED);
+                my_mlx_pixel_put(&data->two_D, i ,half - x, RED);
                 x++;
             }
             x = 0;
             //down walls
             while (height > half_height && half + x < finish && half + x > start)
             {
-                if (data->player.ray[i] > 100)
-                    my_mlx_pixel_put(&data->two_D, i ,half + x, RED / 2);
-                else
-                    my_mlx_pixel_put(&data->two_D, i ,half + x, RED);
-                    
-
+                my_mlx_pixel_put(&data->two_D, i ,half + x, RED);
                 half_height++;
                 x++;
             }
@@ -64,14 +57,12 @@ void walls(t_parsing_result *data)
         
     }
 
-// }
 
 
 void draw3Dstart(t_parsing_result *data)
 {
   
-    walls(data);
+    // walls(data,0);
+    data->fd_ea = 0;
 
-    mlx_put_image_to_window(data->mlx, data->win,
-                            data->two_D.img_ptr, 0, 0);
-}
+   }

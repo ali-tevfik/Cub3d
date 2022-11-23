@@ -36,7 +36,7 @@ NAME	= cub3d
 
 GCC		= gcc
 
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 
 HEADER_FILE =	cub3d.h\
 				includes
@@ -59,6 +59,8 @@ $(NAME):	$(OBJS)
 	$(GCC) $(FLAGS) -c $< -o $(<:.c=.o)
 	@echo "$(GREEN)Successfully compiled!$(NORMAL)"
 
+run: all 
+	./$(NAME) maps_variations/ali_maps.cub
 clean:
 	@echo "$(RED)Removing all object files...$(NORMAL)"
 	rm -f $(OBJS)

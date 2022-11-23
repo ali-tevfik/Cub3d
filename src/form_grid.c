@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/21 18:16:04 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/23 18:06:44 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 	gstate->player.hitX = 0;
 	gstate->player.hitX = 0;
 	if (c == 'N')
-		gstate->player.pa = 3 * M_PI / 2;
+		gstate->player.pa = 1.5 * M_PI;
 	else if (c == 'S')
-		gstate->player.pa = M_PI / 2;
+		gstate->player.pa = M_PI * 0.5;
 
 	else if (c == 'E')
 		gstate->player.pa = 2 * M_PI;

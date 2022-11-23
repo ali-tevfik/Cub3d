@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/21 17:58:11 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/23 16:43:09 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void create_elemntry(t_parsing_result *data, int wall_x, int wall_y, int color);
 double find_ray_len(double x, double y);
 int	my_mlx_pixel_get(t_img *img, int x, int y);
 void draw3Dstart(t_parsing_result *data);
-void walls(t_parsing_result *data);
+void walls(t_parsing_result *data, int i);
 void	start_draw( t_parsing_result *data);
 double len_find(t_parsing_result *data, double angle);
 void	move(t_parsing_result *data, int keycode);
