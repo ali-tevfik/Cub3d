@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing_gamestate.h                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/21 18:12:27 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing_gamestate.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:50:46 by yuliia            #+#    #+#             */
+/*   Updated: 2022/11/23 18:03:49 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-
-
 typedef struct  s_parsing_result
 {
 	//map
@@ -66,11 +64,11 @@ typedef struct  s_parsing_result
 	unsigned int rgb_floor;
 	unsigned int rgb_ceiling;
 	
-	//texture opened file descriptors
-	int fd_no;
-	int fd_so;
-	int fd_ea;
-	int fd_we;
+	//textures files
+	char *no;
+	char *so;
+	char *ea;
+	char *we;
 
 	//ali added screen data
 	t_img	two_D;

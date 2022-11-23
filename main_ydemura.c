@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_ydemura.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:41 by yuliia            #+#    #+#             */
-/*   Updated: 2022/10/31 19:52:42 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/11/23 17:59:50 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ void	free_array(char **array)
 		free(array[i]);
 	}
 	free(array);
-}
-
-void	close_texture_files(t_parsing_result *prs)
-{
-	close(prs->fd_so);
-	close(prs->fd_no);
-	close(prs->fd_ea);
-	close(prs->fd_we);
-	
 }
 
 

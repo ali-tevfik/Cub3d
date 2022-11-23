@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   error_handling.h                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:47:00 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/21 12:43:11 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   error_handling.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:47:00 by yuliia            #+#    #+#             */
+/*   Updated: 2022/11/23 18:09:07 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef enum     e_error_handling
 	ERR_MALLOC = 108,
 	ERR_OPEN = 109,
 	ERR_CLOSE = 110,
-	ERR_READ = 111
+	ERR_READ = 111,
+	ERR_EXTENTION = 112
 	
 }                t_error_handling;
 

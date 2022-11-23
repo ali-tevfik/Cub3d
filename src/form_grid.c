@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   form_grid.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/21 18:16:04 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   form_grid.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
+/*   Updated: 2022/11/23 18:02:59 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	form_grid(int fd, t_game_state *gstate)
 		}
 		grid.ri++;
 	}
-	if (grid.next_line_flag != grid.rn)
+	if (grid.next_line_flag != grid.rn - 1)
 		error_message_exit(ERR_MAP);
 	check_map_for_boarders(&grid);
 	return (0);

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing_gamestate.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:52:56 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/23 13:18:50 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing_gamestate.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:56 by yuliia            #+#    #+#             */
+/*   Updated: 2022/11/23 18:10:34 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing_gamestate.h"
 #include "../includes/form_data_structure.h"
 #include "../includes/form_grid.h"
+#include "../includes/textures.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -29,6 +30,7 @@ t_game_state	form_gamestate(const char *file_name)
 	int				fd;
 	t_game_state	game_state;
 
+	collect_path(file_name, ".cub");
 	game_state.map_size = initiate_map_size(file_name);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -48,15 +50,11 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->len_cols = gstate->map_size.len_cols;
 	parsing->rgb_floor = gstate->data.rgb_floor;
 	parsing->rgb_ceiling = gstate->data.rgb_ceiling;
-	parsing->fd_no = gstate->data.fd_no;
-	parsing->fd_so = gstate->data.fd_so;
-	parsing->fd_ea = gstate->data.fd_ea;
-	parsing->fd_we = gstate->data.fd_we;
-	
-	
-//	parsing->player = &gstate->player;
+	parsing->no = gstate->data.no;
+	parsing->so = gstate->data.so;
+	parsing->ea = gstate->data.ea;
+	parsing->we = gstate->data.we;
 	parsing->player = gstate->player;
-	
 }
 
 t_parsing_result	parsing(const char **argv, int argc)

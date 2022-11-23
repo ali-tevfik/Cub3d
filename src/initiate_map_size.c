@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   initiate_map_size.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:52:32 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/21 12:45:46 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   initiate_map_size.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:52:32 by yuliia            #+#    #+#             */
+/*   Updated: 2022/11/23 18:02:01 by yuliia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ t_map_size	initiate_map_size(const char *file_name)
 	while (res > 0)
 	{
 		res = exam_get_next_line(fd, &str);
-		if (res == 0)
-			break ;
 		if (is_string_maze_part_of_map(str, &map_size) == TRU)
 			get_longest_col_increase_row(str, &map_size);
 		else if (map_size.len_rows == 0)
@@ -101,6 +99,8 @@ t_map_size	initiate_map_size(const char *file_name)
 		else if (map_size.len_rows > 0
 			&& is_string_maze_part_of_map(str, &map_size) == FLS)
 			error_message_exit(ERR_MAP);
+		if (res == 0) //check for res transfered below string check
+			break ;
 	}
 	if (close(fd) < 0)
 		error_message_exit(ERR_CLOSE);
