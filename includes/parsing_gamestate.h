@@ -79,6 +79,7 @@ typedef struct  s_parsing_result
 	void	*win;	
 	
 	//player section, also can be in player structure
+	//t_plr *player;// - struct
 	t_plr player;// - struct
 	// int player_x;
 	// int player_y;

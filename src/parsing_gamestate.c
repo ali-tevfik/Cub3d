@@ -54,6 +54,7 @@ void	pack_parsing(t_game_state *gstate, t_parsing_result *parsing)
 	parsing->fd_we = gstate->data.fd_we;
 	
 	
+//	parsing->player = &gstate->player;
 	parsing->player = gstate->player;
 	
 }

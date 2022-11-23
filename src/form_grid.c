@@ -18,6 +18,11 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+#include <math.h>
 #include "../cub3d.h"
 
 char	**malloc_arr(int row, int col)

@@ -14,6 +14,7 @@
 #include "../includes/initiate_data.h"
 #include <stdio.h>
 
+
 int	is_neibor_wall_floor(t_grid *grid, int ri, int ci)
 {
 	if (ri >= grid->rn || ri < 0 || ci >= grid->cn || ci < 0)
