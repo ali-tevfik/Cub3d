@@ -23,6 +23,8 @@
         "fcntl.h": "c",
         "initiate_map_size.h": "c",
         "gnl.h": "c",
-        "form_data_structure.h": "c"
+        "form_data_structure.h": "c",
+        "mlx42.h": "c",
+        "initiate_data.h": "c"
     }
 }

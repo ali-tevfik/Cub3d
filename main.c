@@ -2,19 +2,17 @@
 #include "cub3d.h"
 
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
-{
-	char	*dst;
-	int		offset;
+// void	mlx_put_pixel(t_img *data, int x, int y, int color)
+// {
+// 	char	*dst;
 
-	offset = y * img->line_size + x * (img->bits_per_pixel / 8);
-	dst = img->address + offset;
-	*(unsigned int *)dst = colour;
-}
+// 	dst = data->address + (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	*(unsigned int*)dst = color;
+// }
 
 
 
-void	start_draw( t_parsing_result *data)
+void	start_draw(t_parsing_result *data)
 {
 
 	create_win(data);
@@ -22,9 +20,8 @@ void	start_draw( t_parsing_result *data)
 	// maps_load(data);
 	//just 3d
 	draw_3d(data);
-
-	mlx_hook(data->win, 2, 0, click_button, data);
-	mlx_hook(data->win, 17, 0, close_clik, data);
+	mlx_key_hook(data->mlx, &click_button, data);
+	// mlx_loop_hook(data->win, close_clik, data);
 	mlx_loop(data->mlx);
 
 

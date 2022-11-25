@@ -104,7 +104,5 @@ void draw_3d(t_parsing_result *data)
     i += 0.0006;
     a++;
     }
-     mlx_put_image_to_window(data->mlx, data->win,
-                            data->two_D.img_ptr, 0, 0);
-
+    mlx_image_to_window(data->mlx, data->img, 0, 0);
 }

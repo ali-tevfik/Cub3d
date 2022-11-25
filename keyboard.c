@@ -10,13 +10,13 @@ int check_move(int x, int y, t_parsing_result *data)
 	}
 	return (FALSE);
 }
-void	move(t_parsing_result *data, int keycode)
+void	move(t_parsing_result *data)
 {
 	double moveX;
 	double moveY;
 	int hit = 0;
 
-	if (keycode == LEFT || keycode == A)
+	if (mlx_is_key_down(data->mlx,MLX_KEY_A))
 	{
 		printf("\n LEFT\n--------------------\n");
 		data->player.pa -= 0.05 * M_PI; 
@@ -30,7 +30,7 @@ void	move(t_parsing_result *data, int keycode)
 		printf("position x %f y %f\n",data->player.x, data->player.y);
 	}
 
-	if (keycode == RIGHT || keycode == D)
+	if (mlx_is_key_down(data->mlx,MLX_KEY_D))
 	{
 		printf("\n RIGHT\n--------------------\n");
 		printf("angle before %f\n",data->player.pa  / (M_PI));
@@ -44,7 +44,7 @@ void	move(t_parsing_result *data, int keycode)
 		printf("position %f %f\n",data->player.x, data->player.y);
 		
 	}
-	if (keycode == DOWN || keycode == S)
+	if (mlx_is_key_down(data->mlx,MLX_KEY_S))
 	{
 		printf("\n DOWN\n--------------------\n");
 		printf("angle  = %f\n", data->player.pa / (M_PI));
@@ -63,7 +63,7 @@ void	move(t_parsing_result *data, int keycode)
 		printf("camera %f %f\n",data->player.x_camera, data->player.y_camera);
 
 	} 
-	if (keycode == UP || keycode == W)
+	if (mlx_is_key_down(data->mlx,MLX_KEY_W))
 	{
 		printf("\n UP\n--------------------\n");
 
@@ -87,30 +87,31 @@ void	move(t_parsing_result *data, int keycode)
 
 	// if (hit == 1)
 	// {
-		clean_maps(data);
+		// clean_maps(data);
 		// maps_load(data);
 		draw_3d(data);
 	// }
 
 }
 
-int	click_button(int keycode, t_parsing_result *data)
+void	click_button(mlx_key_data_t keydata,void *info)
 {
 	int result;
+	t_parsing_result *data;
 
+	data = (t_parsing_result *) info; 
 	result = -1;
 	
-	if (keycode == 53)
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_destroy_window(data->mlx, data->win);
+		mlx_close_window(data->mlx);
         exit(0);
 	}
-	move(data, keycode);
-	return (0);
+	move(data);
 }
 
 int	close_clik(t_parsing_result *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
+	mlx_close_window(data->mlx);
 	exit (0);
 }

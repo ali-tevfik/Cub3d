@@ -15,11 +15,6 @@ void walls(t_parsing_result *data, int i)
     int x;
 
         height = 1000 / data->player.ray; 
-        // height = ((double)750 / ( 50 * data->player.ray));
-        // height = 750 * data->player.ray[0];
-        // printf("data %f\n",data->player.ray[0]);
-        // printf("heih %f %f %f %f\n",height, data->player.ray,data->player.x, data->player.y);
-        // printf("heighy %f\n",height);
         if (height > 1000)
             height = 999;
         if (height < 0)
@@ -31,9 +26,9 @@ void walls(t_parsing_result *data, int i)
             {
                 //up
                 if (y < half)
-                    my_mlx_pixel_put(&data->two_D, i ,y, 0XF08080);
+                    mlx_put_pixel(data->img, i ,y, 0XF08080);
                 else //down
-                    my_mlx_pixel_put(&data->two_D, i ,y, 0XF08080);
+                    mlx_put_pixel(data->img, i ,y, 0XF08080);
                 y++;
             }
             x = 0;
@@ -41,14 +36,14 @@ void walls(t_parsing_result *data, int i)
             //up walls
             while (half_height > x && half - x < finish && half - x > start)
             {
-                my_mlx_pixel_put(&data->two_D, i ,half - x, RED);
+                mlx_put_pixel(data->img, i ,half - x, RED);
                 x++;
             }
             x = 0;
             //down walls
             while (height > half_height && half + x < finish && half + x > start)
             {
-                my_mlx_pixel_put(&data->two_D, i ,half + x, RED);
+                mlx_put_pixel(data->img, i ,half + x, RED);
                 half_height++;
                 x++;
             }

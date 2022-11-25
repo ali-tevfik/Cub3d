@@ -2,12 +2,10 @@
 
 void	create_win(t_parsing_result *data)
 {
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx,1000, 1000, "CUB3D");
-	data->two_D.img_ptr = mlx_new_image(data->mlx,1000, 1000);
-	data->two_D.address = mlx_get_data_addr(data->two_D.img_ptr,
-			&data->two_D.bits_per_pixel,
-			&data->two_D.line_size, &data->two_D.endian);
+	data->mlx = mlx_init((const uint32_t)screenWidth, (const uint32_t)screenHeight, "Cub3d", false);
+	if (!data->mlx)
+		exit(EXIT_FAILURE);
+	data->img = mlx_new_image(data->mlx, screenWidth, screenHeight);
 }
 
 
@@ -24,7 +22,7 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 		y = player_y;
 		while (y - 3 < player_y)
 		{
-			my_mlx_pixel_put(&data->two_D, x, y, 0X000000);
+			mlx_put_pixel(data->img, x, y, 0X000000);
 			y++;
 		}
 		x++;
@@ -44,8 +42,8 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 
 	// }
 
-    mlx_put_image_to_window(data->mlx, data->win,
-                            data->two_D.img_ptr, 0, 0);
+    // mlx_put_image_to_window(data->mlx, data->win,
+    //                         data->img.img, 0, 0);
 	// draw3Dstart(data);
 	
 }
@@ -67,7 +65,7 @@ void create_elemntry(t_parsing_result *data, int wall_x, int wall_y, int color)
 		y = wall_y * 50;
 		while (y < (wall_y * 50) + 49 )
 		{
-			my_mlx_pixel_put(&data->two_D, x, y, color);
+			mlx_put_pixel(data->img, x, y, color);
 			y++;
 		}
 		x++;

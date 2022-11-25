@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/25 13:32:00 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/25 15:45:59 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "error_handling.h"
 # include "initiate_data.h"
 # include "initiate_map_size.h"
+#include "../minilibx_opengl/include/MLX42/MLX42.h"
 
 typedef struct  s_plr
 {
@@ -42,12 +43,10 @@ typedef struct  s_game_state
 
 typedef struct s_img
 {
-	void	*img_ptr;
+	void	*img;
 	char	*address;
 	int		bits_per_pixel;
-	int		line_size;
-	int		len_height;
-	int		img_width;
+	int		line_length;
 	int		endian;
 }			t_img;
 
@@ -72,9 +71,8 @@ typedef struct  s_parsing_result
 	char *we;
 
 	//ali added screen data
-	t_img	two_D;
-	t_img	game;
-	void	*mlx;
+	mlx_image_t	*img;
+	mlx_t	*mlx;
 	void	*win;	
 	
 	//player section, also can be in player structure

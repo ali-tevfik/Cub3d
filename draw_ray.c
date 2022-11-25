@@ -21,7 +21,7 @@ double draw_ray(t_parsing_result *data, double angle, long color)
 		{
 			if (check_walls(x1, y1, data))
 			{
-            	my_mlx_pixel_put(&data->two_D, x1, y1, color);
+            	mlx_put_pixel(data->img, x1, y1, color);
 				// printf("ray x %d y %d\n",x1,y1);
 			}
 			else
@@ -50,7 +50,7 @@ void draw_angle(t_parsing_result *data, double angle, int line_lenght, long colo
         y1 = (i * sin(angle)) + data->player.y * 50 + 1;
 		// printf("x %d y %d ,angel value = %f, y value = %f\n", data->len_rows * 50,  data->len_cols * 50 ,x1,y1);	
         if (x1 < data->len_cols * 50 && x1 > 0  && y1 < data->len_rows * 50 && y1 > 0)
-            my_mlx_pixel_put(&data->two_D, x1, y1, color);
+            mlx_put_pixel(data->img, x1, y1, color);
 	}
     // printf("x value = %d, y value = %d\n", x1, y1);
 }

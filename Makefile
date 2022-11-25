@@ -46,9 +46,9 @@ HEADER_FILE =	cub3d.h\
 
 MLX_DIR	= minilibx_opengl
 
-MLX_LIB = libmlx.a
+MLX_LIB = libmlx42.a
 
-LINKS = -framework OpenGL -framework AppKit
+LINKS =  -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 all:	$(NAME)
 
