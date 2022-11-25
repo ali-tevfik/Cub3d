@@ -3,7 +3,11 @@
 int check_move(int x, int y, t_parsing_result *data)
 {
 	if (data->len_cols > x && data->len_rows > y && x > 0 && y > 0)
+	{
+		if (data->map[y][x] == '1')
+			return FALSE;
 		return (TRUE);
+	}
 	return (FALSE);
 }
 void	move(t_parsing_result *data, int keycode)
