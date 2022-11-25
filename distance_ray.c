@@ -15,11 +15,11 @@ double len_find(t_parsing_result *data, double angle)
 
 
 
-    int mapX = (int)roundf(data->player.x);
-    int mapY = (int)roundf(data->player.y);
+    int mapX = (int)data->player.x;
+    int mapY = (int)data->player.y;
 
-    double rayX = fabs(cos(angle));
-    double rayY = fabs(sin(angle));
+    double rayX = cos(angle);
+    double rayY = sin(angle);
 
     double deltaX = fabs(1 / rayX);
     double deltaY = fabs(1 / rayY);
@@ -62,20 +62,17 @@ double len_find(t_parsing_result *data, double angle)
            // printf("entering x\n");
             sideX += deltaX;
             mapX += stepX;
-            side = 0;
+            side = 0 ;
         }
         else
         {
             //printf("entering y\n");
             sideY += deltaY;
             mapY += stepY;
-            side = 1;
+            side = 1 ;
         }
-       
-            if (data->map[mapY][mapX] == '1')
-                hit = 1;
-        
-            // printf("walls y %d x %d col %d row %d\n", mapY, mapX, data->len_cols, data->len_rows);
+        if (data->map[mapY][mapX] == '1')
+            hit = 1;
     }
 
     double distance;
@@ -90,7 +87,8 @@ double len_find(t_parsing_result *data, double angle)
 	else if ( ca > 2 * PI)
 			ca -= 2 * PI;
     double perp_dist = distance * cos(ca) ;
-    printf("distance %f\n",perp_dist);
+    perp_dist = fabs(perp_dist);
+    // printf("distance %f\n",distance);
     return (perp_dist);
 }
 
@@ -104,7 +102,7 @@ void draw_3d(t_parsing_result *data)
    
     walls(data, a);
     i += 0.0006;
-     a++;
+    a++;
     }
      mlx_put_image_to_window(data->mlx, data->win,
                             data->two_D.img_ptr, 0, 0);

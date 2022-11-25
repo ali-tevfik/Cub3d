@@ -1,9 +1,17 @@
 #include "cub3d.h"
 
-
+int check_move(int x, int y, t_parsing_result *data)
+{
+	if (data->len_cols > x && data->len_rows > y && x > 0 && y > 0)
+		return (TRUE);
+	return (FALSE);
+}
 void	move(t_parsing_result *data, int keycode)
 {
-	clean_maps(data);
+	double moveX;
+	double moveY;
+	int hit = 0;
+
 	if (keycode == LEFT || keycode == A)
 	{
 		printf("\n LEFT\n--------------------\n");
@@ -11,11 +19,11 @@ void	move(t_parsing_result *data, int keycode)
 		printf("angle = %f\n", data->player.pa / (M_PI));
 		if (data->player.pa < 0)
 			data->player.pa += 2 * M_PI;
-		printf("angle after  = %f\n", data->player.pa / (M_PI));
-			data->player.x_camera = cos(data->player.pa) * 5;
-			data->player.y_camera = sin(data->player.pa) * 5;
-		printf("_d %f %f\n",data->player.x_camera, data->player.y_camera);
-		printf("left x %f y %f\n",data->player.x, data->player.y);
+		printf("after angle   = %f\n", data->player.pa / (M_PI));
+			data->player.x_camera = cos(data->player.pa) * 5.0;
+			data->player.y_camera = sin(data->player.pa) * 5.0;
+		printf("camera x %f %f\n",data->player.x_camera, data->player.y_camera);
+		printf("position x %f y %f\n",data->player.x, data->player.y);
 	}
 
 	if (keycode == RIGHT || keycode == D)
@@ -27,23 +35,28 @@ void	move(t_parsing_result *data, int keycode)
 			data->player.pa -= 2 * M_PI;
 		data->player.x_camera =  cos(data->player.pa) * 5.0;
 		data->player.y_camera = sin(data->player.pa) * 5.0;
-		printf("angle = %f\n", data->player.pa / (M_PI));
-		printf("_d %f %f\n",data->player.x_camera, data->player.y_camera);
-		printf("right %f %f\n",data->player.x, data->player.y);
+		printf("after angle = %f\n", data->player.pa / (M_PI));
+		printf("camerea x %f %f\n",data->player.x_camera, data->player.y_camera);
+		printf("position %f %f\n",data->player.x, data->player.y);
 		
 	}
 	if (keycode == DOWN || keycode == S)
 	{
 		printf("\n DOWN\n--------------------\n");
-		printf("angle befor = %f\n", data->player.pa / (M_PI));
+		printf("angle  = %f\n", data->player.pa / (M_PI));
 		// data->player.x -= data->player.x_camera;
 		// data->player.y -= data->player.y_camera;
-
-		data->player.x -= 0.1 * fabs(cos(data->player.pa));
-		data->player.y -= 0.1 * fabs(sin(data->player.pa));
-		printf("angel %f\n",data->player.pa  / (M_PI));
-		printf("down_d %f %f\n",data->player.x_camera, data->player.y_camera);
-		printf("down %f %f\n",data->player.x, data->player.y);
+		printf("before position %f %f\n",data->player.x, data->player.y);
+		moveX = data->player.x - data->player.game_speed * cos(data->player.pa);
+		moveY = data->player.y - data->player.game_speed * sin(data->player.pa);
+		if (check_move(moveX, moveY, data))
+		{
+			data->player.x = moveX;
+			hit = 1;
+			data->player.y = moveY;
+		}
+		printf("player pos after %f %f\n",data->player.x, data->player.y);
+		printf("camera %f %f\n",data->player.x_camera, data->player.y_camera);
 
 	} 
 	if (keycode == UP || keycode == W)
@@ -53,19 +66,27 @@ void	move(t_parsing_result *data, int keycode)
 		printf(" before angle = %f\n", data->player.pa / (M_PI));
 		// data->player.x += data->player.x_camera;
 		// data->player.y += data->player.y_camera;
-printf("beforeup %f %f\n",data->player.x, data->player.y);
-		data->player.x += 0.1 * fabs(cos(data->player.pa));
-		data->player.y += 0.1 * fabs(sin(data->player.pa));
-		printf("angle = %f\n", data->player.pa / (M_PI));
+		printf("pos player beforeup %f %f max x %d max y %d\n",data->player.x, data->player.y, data->len_cols, data->len_rows);
+		moveX = data->player.x + data->player.game_speed * cos(data->player.pa);
+		moveY = data->player.y + data->player.game_speed * sin(data->player.pa);
+		if (check_move(moveX, moveY, data))
+		{
+			data->player.x = moveX;
+			data->player.y = moveY;
+			hit = 1;
+		}
+		printf("pos player after x %f %f\n",data->player.x, data->player.y);
 
-		printf("up_d %f %f\n",data->player.x_camera, data->player.y_camera);
-		printf("up %f %f\n",data->player.x, data->player.y);
+		printf("camera %f %f\n",data->player.x_camera, data->player.y_camera);
 
 	}
 
-	// maps_load(data, 1);
-	draw_3d(data);
-	
+	// if (hit == 1)
+	// {
+		clean_maps(data);
+		// maps_load(data);
+		draw_3d(data);
+	// }
 
 }
 

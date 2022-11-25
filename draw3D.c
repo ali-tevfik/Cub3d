@@ -20,8 +20,8 @@ void walls(t_parsing_result *data, int i)
         // printf("data %f\n",data->player.ray[0]);
         // printf("heih %f %f %f %f\n",height, data->player.ray,data->player.x, data->player.y);
         // printf("heighy %f\n",height);
-        if (height > 750)
-            height = 750;
+        if (height > 1000)
+            height = 999;
         if (height < 0)
             height = 0;
         half_height = height / 2;

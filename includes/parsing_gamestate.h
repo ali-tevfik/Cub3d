@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/23 18:57:29 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/25 13:32:00 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct  s_plr
 	double y;
 	int x_view_direction;
 	int y_view_direction;
+	double game_speed;
 	double x_camera;
 	double y_camera;
 	double ray;

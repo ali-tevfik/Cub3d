@@ -8,13 +8,13 @@ double draw_ray(t_parsing_result *data, double angle, long color)
 	double len;
 	double oldx;
 	double oldy;
-	oldx = (i * cos(angle)) + data->player.x;
-    oldy = (i * sin(angle)) + data->player.y;
+	oldx = (i * cos(angle)) + data->player.x * 50 ;
+    oldy = (i * sin(angle)) + data->player.y * 50 ;
 	// printf("angel %f\n",angle);
     while(1)
     {
-        x1 = (i * cos(angle)) + data->player.x + 1;
-        y1 = (i * sin(angle)) + data->player.y + 1;
+        x1 = (i * cos(angle)) + data->player.x  * 50 + 1;
+        y1 = (i * sin(angle)) + data->player.y  * 50 + 1;
 		// printf("x %d y %d ,angel value = %f, y value = %f\n",data->player.x, data->player.y ,data->player.d_x, data->player.d_y);	
         // printf("x1 %d y1 %d\n",x1,y1);
         if (x1 < data->len_cols * 50 && x1 > 0  && y1 < data->len_rows * 50 && y1 > 0)
@@ -46,8 +46,8 @@ void draw_angle(t_parsing_result *data, double angle, int line_lenght, long colo
 
     for(int i = 0; i < line_lenght; i += 1)
     {
-        x1 = (i * cos(angle)) + data->player.x + 1;
-        y1 = (i * sin(angle)) + data->player.y + 1;
+        x1 = (i * cos(angle)) + data->player.x * 50 + 1;
+        y1 = (i * sin(angle)) + data->player.y * 50 + 1;
 		// printf("x %d y %d ,angel value = %f, y value = %f\n", data->len_rows * 50,  data->len_cols * 50 ,x1,y1);	
         if (x1 < data->len_cols * 50 && x1 > 0  && y1 < data->len_rows * 50 && y1 > 0)
             my_mlx_pixel_put(&data->two_D, x1, y1, color);

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/23 16:43:09 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/24 18:10:33 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int check_right(t_parsing_result *data);
 void create_angel(t_parsing_result *data, int wall_x, int wall_y);
 int check_left(t_parsing_result *data);
 int check_down(t_parsing_result *data);
-t_parsing_result	*maps_load(t_parsing_result *data, int where);
+t_parsing_result	*maps_load(t_parsing_result *data);
 int	close_clik(t_parsing_result *data);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void create_player(t_parsing_result *data, int player_x, int player_y);

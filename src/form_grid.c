@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/23 18:58:29 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/25 13:34:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 	gstate->player.x = grid->ci;
 	gstate->player.y = grid->ri;
 	gstate->player.hitX = 0;
+	gstate->player.game_speed = 0.2;
 	gstate->player.hitX = 0;
 	if (c == 'N')
 		gstate->player.pa = 1.5 * M_PI;
@@ -59,9 +60,9 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 		gstate->player.pa = M_PI * 0.5;
 
 	else if (c == 'E')
-		gstate->player.pa = 2 * M_PI;
+		gstate->player.pa =  M_PI * 2;
 	else if (c == 'W')
-		gstate->player.pa = M_PI;
+		gstate->player.pa =  M_PI ;
 	gstate->player.x_view_direction = cos(gstate->player.pa) * 5;
 	gstate->player.y_view_direction = sin(gstate->player.pa) * 5;
 }

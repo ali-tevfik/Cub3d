@@ -15,8 +15,8 @@ void	create_win(t_parsing_result *data)
 void create_player(t_parsing_result *data, int player_x, int player_y)
 {
 
-	int x = player_x;
-	int y = player_y;
+	int x = player_x * 50;
+	int y = player_y * 50;
 	printf("player x %d y %d\n",player_x,player_y);
 	
 	while (player_x > x - 3)
@@ -34,9 +34,11 @@ void create_player(t_parsing_result *data, int player_x, int player_y)
 	// int a = 0;
 	// for (double i = -0.3; i < 0.3; i+=0.0008)
 	// {
-	// 	data->player.ray[a] = draw_ray(data, data->player.pa + i, 0XFF0000);
-	// 	// double ca = fabs(i);
-	// 	// data->player.ray[a] = data->player.ray[a] * cos(ca);
+		// data->player.ray = draw_ray(data, data->player.pa + i, 0XFF0000);
+		data->player.ray = draw_ray(data, data->player.pa, 0XFF0000);
+		// walls(data,a);
+		// double ca = fabs(i);
+		// data->player.ray[a] = data->player.ray[a] * cos(ca);
 	// 	a++;
 	// 	// printf("---------------------\n");
 

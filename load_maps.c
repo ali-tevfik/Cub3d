@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-t_parsing_result	*maps_load(t_parsing_result *data, int where)
+t_parsing_result	*maps_load(t_parsing_result *data)
 {
 	int	a;
 	int	x;
@@ -13,20 +13,9 @@ t_parsing_result	*maps_load(t_parsing_result *data, int where)
 		{
 			if (data->map[x][a] == '0')
 				create_elemntry(data, a, x, 0XFFFFFF);
-			else if (data->map[x][a] == '1')
+			else if (data->map[x][a] == '1' || data->map[x][a] == 'P')
 			{
 				create_elemntry(data, a, x, 0X4C1130);
-			}
-			
-			else if (data->map[x][a] == 'P' )
-			{
-				create_elemntry(data, a, x, 0XFFFFFF);
-				if (where == 0)
-				{				
-					data->player.x_camera = cos(data->player.pa) * 5;
-					data->player.y_camera = sin(data->player.pa) * 5;
-				}
-
 			}
 			a++;
 		}

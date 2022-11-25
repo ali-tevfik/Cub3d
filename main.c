@@ -19,7 +19,7 @@ void	start_draw( t_parsing_result *data)
 
 	create_win(data);
 	//2d and 3d
-	// maps_load(data, 0);
+	// maps_load(data);
 	//just 3d
 	draw_3d(data);
 
