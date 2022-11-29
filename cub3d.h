@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/25 16:34:36 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/25 17:06:17 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,7 @@
 #define screenWidth 1000
 #define screenHeight 1000
 
-# define ESC 53
-# define UP 126
-# define RIGHT 124
-# define DOWN 125
-# define LEFT 123
-# define W 13
-# define D 2
-# define S 1
-# define A 0
+
 # define TRUE 1
 # define FALSE 0
 # define PI 3.14159265359

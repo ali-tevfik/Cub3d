@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/25 15:45:59 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/25 16:45:01 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct  s_parsing_result
 	char *so;
 	char *ea;
 	char *we;
+
+	mlx_texture_t *texture[4];
 
 	//ali added screen data
 	mlx_image_t	*img;

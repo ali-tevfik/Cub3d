@@ -23,6 +23,7 @@ void	start_draw(t_parsing_result *data)
 	mlx_key_hook(data->mlx, &click_button, data);
 	// mlx_loop_hook(data->win, close_clik, data);
 	mlx_loop(data->mlx);
+	mlx_terminate(data->mlx);
 
 
 }
@@ -34,7 +35,14 @@ int main(int argc, const char **argv)
 	data = parsing(argv, argc);
 	data.player.x += 0.5;
 	data.player.y += 0.5;
-
+	printf("%s\n",data.ea);
+	data.texture[0] = mlx_load_png("./example.png");
+	if (!data.texture[0])
+		{
+			printf("0 failed to load texture\n");
+			exit(1);
+		}
+	
 	printf("player x %f y %f\n",data.player.x, data.player.y);
 	start_draw(&data);
 
