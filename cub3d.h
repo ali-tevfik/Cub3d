@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/25 17:06:17 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/01 17:27:42 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 #define screenWidth 1000
 #define screenHeight 1000
 
-
+# define texWidth 64
 # define TRUE 1
 # define FALSE 0
 # define PI 3.14159265359
 # define BLACK 0X000000
 # define BLAUW 0X0000FF
-# define RED 0X00FF00
+# define RED 0x0000FFFF
 
 
 int check_up(t_parsing_result *data); 	

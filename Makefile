@@ -3,6 +3,9 @@ NORMAL = \033[38;5;255m
 RED = \033[38;5;1m
 BLUE = \033[38;5;4m
 
+# GLFW_LIB = -L /opt/homebrew/Cellar/glfw/3.3.6/lib # pro
+GLFW_LIB = -L /opt/homebrew/Cellar/glfw/3.3.8/lib # iMac
+
 SRCS	=	get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
 			main.c\
@@ -37,9 +40,7 @@ NAME	= cub3d
 GCC		= gcc
 
 FLAGS	= -Wall -Wextra -Werror -g
-# FLAGS	= -Wall -Wextra
-# #-Werror
-# >>>>>>> d70ab1430d72886f6931f085304feb0f281a2489
+
 
 HEADER_FILE =	cub3d.h\
 				includes
@@ -55,6 +56,9 @@ all:	$(NAME)
 $(NAME):	$(OBJS)
 	$(MAKE) -C $(MLX_DIR)
 	$(MAKE) -C $(LIBFT_DIR)
+	# //mac use 
+	# $(GCC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT_DIR)/$(LIBFT_LIB) $(MLX_DIR)/$(MLX_LIB) $(GLFW_LIB)  $(LINKS)
+	# codam use
 	$(GCC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT_DIR)/$(LIBFT_LIB) $(MLX_DIR)/$(MLX_LIB) $(LINKS)
 
 %.o: %.c $(HEADER_FILE)
