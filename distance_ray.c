@@ -30,7 +30,6 @@ double len_find(t_parsing_result *data, double angle)
     int stepY;
 
     int hit = 0;
-    int side;
     // printf("deltaX %f deltaY %f\n ", deltaX, deltaY);
     if (rayX < 0)
     {
@@ -62,21 +61,21 @@ double len_find(t_parsing_result *data, double angle)
            // printf("entering x\n");
             sideX += deltaX;
             mapX += stepX;
-            side = 0 ;
+            data->player.side = 0 ;
         }
         else
         {
             //printf("entering y\n");
             sideY += deltaY;
             mapY += stepY;
-            side = 1 ;
+            data->player.side = 1 ;
         }
         if (data->map[mapY][mapX] == '1')
             hit = 1;
     }
 
     double distance;
-    if (side == 0)
+    if (data->player.side == 0)
         distance = sideX - deltaX;
     else
         distance = sideY - deltaY;
@@ -89,6 +88,15 @@ double len_find(t_parsing_result *data, double angle)
     double perp_dist = distance * cos(ca) ;
     perp_dist = fabs(perp_dist);
     // printf("distance %f\n",distance);
+
+
+    if (data->player.side == 0)
+        data->player.wallX = data->player.y + rayY * distance;
+    else
+        data->player.wallX = data->player.x + rayX * distance;
+    data->player.wallX -= floorf(data->player.wallX);
+
+
     return (perp_dist);
 }
 

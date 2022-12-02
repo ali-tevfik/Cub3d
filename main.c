@@ -36,6 +36,7 @@ int main(int argc, const char **argv)
 	data.player.x += 0.5;
 	data.player.y += 0.5;
 	printf("%s\n",data.ea);
+	// data.texture[0] = mlx_load_png("./textures/1.png");
 	data.texture[0] = mlx_load_png("./example.png");
 	if (!data.texture[0])
 		{

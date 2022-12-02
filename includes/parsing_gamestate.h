@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/25 16:45:01 by adoner        ########   odam.nl         */
+/*   Updated: 2022/11/29 18:18:14 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@
 # include "initiate_data.h"
 # include "initiate_map_size.h"
 #include "../minilibx_opengl/include/MLX42/MLX42.h"
+
+typedef union u_rgba
+{
+	unsigned int	rgba;
+	struct {
+		unsigned char	r;
+		unsigned char	g;
+		unsigned char	b;
+		unsigned char	a;
+	};
+}				t_rgba;
+
 
 typedef struct  s_plr
 {
@@ -30,6 +42,8 @@ typedef struct  s_plr
 	double ray;
 	int hitX;
 	int hitY;
+	int side;
+	double wallX;
 	double pa;
 }               t_plr;
 
