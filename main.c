@@ -12,7 +12,24 @@
 // 	*(unsigned int*)dst = color;
 // }
 
+void	free_all(t_parsing_result *data)
+{
+	int	i;
 
+	i = 0;
+	while (data->map[i] != NULL)
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	free(data->no);
+	free(data->so);
+	free(data->ea);
+	free(data->we);
+
+	//6 leaks for 5763168 total leaked bytes. - not sure where they are 
+}
 
 void	start_draw(t_parsing_result *data)
 {
@@ -26,13 +43,15 @@ void	start_draw(t_parsing_result *data)
 	// mlx_loop_hook(data->win, close_clik, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
-
+	free_all(data);
 
 }
 
 void	leaks(void){
 	system("leaks -q cub3d");
 }
+
+
 
 int main(int argc, const char **argv)
 {
@@ -53,7 +72,5 @@ int main(int argc, const char **argv)
 	
 	printf("player x %f y %f\n",data.player.x, data.player.y);
 	start_draw(&data);
-
-	
-	
+	//free_all(&data); // - need to make sure we get here after exit
 }	

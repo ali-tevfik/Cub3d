@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing_gamestate.h                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/29 18:18:14 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing_gamestate.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:50:46 by yuliia            #+#    #+#             */
+/*   Updated: 2022/12/02 13:25:00 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef union u_rgba
 		unsigned char	a;
 	};
 }				t_rgba;
-
 
 typedef struct  s_plr
 {
@@ -66,41 +65,20 @@ typedef struct s_img
 
 typedef struct  s_parsing_result
 {
-	//map
 	char	**map;
-	
-	
-	//map sizes
-	int len_rows; // - total rows number
-	int len_cols; // - longest column size
-	
-	//floor and seiling collors
+	int len_rows;
+	int len_cols;
 	unsigned int rgb_floor;
 	unsigned int rgb_ceiling;
-	
-	//textures files
 	char *no;
 	char *so;
 	char *ea;
 	char *we;
-
 	mlx_texture_t *texture[4];
-
-	//ali added screen data
 	mlx_image_t	*img;
 	mlx_t	*mlx;
 	void	*win;	
-	
-	//player section, also can be in player structure
-	//t_plr *player;// - struct
-	t_plr player;// - struct
-	// int player_x;
-	// int player_y;
-	// int x_view_direction;
-	// int y_view_direction;
-	// double x_camera;
-	// double y_camera;
-	// int pa; // not initialized
+	t_plr player;
 }               t_parsing_result;
 
 t_parsing_result parsing(const char **argv, int argc);
