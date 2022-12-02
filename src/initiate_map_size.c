@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initiate_map_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:32 by yuliia            #+#    #+#             */
-/*   Updated: 2022/11/23 18:02:01 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/02 13:16:27 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "../includes/map_utils.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int	initiate_map_struct_open_file(const char *file_name, t_map_size *map_size)
 {
@@ -99,6 +100,7 @@ t_map_size	initiate_map_size(const char *file_name)
 		else if (map_size.len_rows > 0
 			&& is_string_maze_part_of_map(str, &map_size) == FLS)
 			error_message_exit(ERR_MAP);
+		free(str);
 		if (res == 0) //check for res transfered below string check
 			break ;
 	}

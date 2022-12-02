@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "cub3d.h"
 
+#include <stdlib.h>
+
 
 // void	mlx_put_pixel(t_img *data, int x, int y, int color)
 // {
@@ -28,9 +30,14 @@ void	start_draw(t_parsing_result *data)
 
 }
 
+void	leaks(void){
+	system("leaks -q cub3d");
+}
+
 int main(int argc, const char **argv)
 {
 	t_parsing_result data;
+	atexit(leaks);
 
 	data = parsing(argv, argc);
 	data.player.x += 0.5;
