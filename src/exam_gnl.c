@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:05 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/02 13:12:24 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/02 14:41:37 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ int	exam_get_next_line(int fd, char **line)
 		if (gnl.res == -1)
 			error_message_exit(ERR_READ);
 		else if (*gnl.temp == '\0' && gnl.c == '\n')
+		{
+			free(gnl.temp);
 			return (gnl.res);
+		}
+			
 		gnl.temp[gnl.conter] = gnl.c;
 		gnl.conter++;
 		if (gnl.conter == gnl.len)

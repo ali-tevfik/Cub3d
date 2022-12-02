@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:59 by yuliia            #+#    #+#             */
-/*   Updated: 2022/11/23 18:08:52 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/02 14:59:23 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	error_message_exit(t_error_handling err)
 		printf("read crushed\n");
 	else if (err == ERR_EXTENTION)
 		printf("wrong extention\n");
-//	else
-//		printf("something went wrong\n");
+	else
+		printf("test end here\n");
 	exit(EXIT_FAILURE);
 }

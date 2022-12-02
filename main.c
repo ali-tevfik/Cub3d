@@ -28,7 +28,7 @@ void	free_all(t_parsing_result *data)
 	free(data->ea);
 	free(data->we);
 
-	//6 leaks for 5763168 total leaked bytes. - not sure where they are 
+	//leaks -> not sure where they are 
 }
 
 void	start_draw(t_parsing_result *data)
@@ -58,7 +58,8 @@ int main(int argc, const char **argv)
 	t_parsing_result data;
 	atexit(leaks);
 
-	data = parsing(argv, argc);
+	data = parsing(argv, argc); // 0 leaks here, few leaks further 
+	error_message_exit(5050); // for testing purposes, to check leaks only in input
 	data.player.x += 0.5;
 	data.player.y += 0.5;
 	printf("%s\n",data.ea);
@@ -72,5 +73,5 @@ int main(int argc, const char **argv)
 	
 	printf("player x %f y %f\n",data.player.x, data.player.y);
 	start_draw(&data);
-	//free_all(&data); // - need to make sure we get here after exit
+	// free_all(&data); // - need to make sure we get here after exit
 }	

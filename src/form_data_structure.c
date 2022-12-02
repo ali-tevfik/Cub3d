@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:11 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/02 13:13:27 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/02 14:56:19 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ int	form_data_structure(int fd, t_map_size *mp_size, t_data *data)
 		if (buff != NULL && buff[0] != '\0')
 		{
 			pars_received_string(data, buff);
-			free(buff);
-			buff = NULL;
 		}
+		free(buff);
+		buff = NULL;
 		mp_size->strings_before_map--;
 	}
 	if (data->flags.all_flags_collected != 1)
-		data->err = ERR_INCOMPLETE_INFORMATION;
+		error_message_exit(ERR_INCOMPLETE_INFORMATION);
 	return (0);
 }
