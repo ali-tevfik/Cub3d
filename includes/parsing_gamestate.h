@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing_gamestate.h                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:50:46 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/02 13:25:00 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing_gamestate.h                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:50:46 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/12/05 17:54:42 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef union u_rgba
 	};
 }				t_rgba;
 
+enum side{
+	EAST = 0,
+	SOUTH = 1,
+	WEST = 2,
+	NORTH =3
+};
+
 typedef struct  s_plr
 {
 	double x;
@@ -39,6 +46,8 @@ typedef struct  s_plr
 	double x_camera;
 	double y_camera;
 	double ray;
+	enum side side_enum;
+	double hitpos;
 	int hitX;
 	int hitY;
 	int side;
@@ -62,6 +71,7 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }			t_img;
+
 
 typedef struct  s_parsing_result
 {

@@ -2,10 +2,10 @@
 F  1, 2, 3
 C  2, 3, 4
 
-NO  ./textures/0.png
-WE  ./textures/1.png
-EA  ./textures/2.png
-SO  ./textures/3.png
+NO  ./textures/brick1.png
+WE  ./textures/brick2.png
+EA  ./textures/brick3.png
+SO  ./textures/brick4.png
 
 11111111111111111111
 10000000000000000001

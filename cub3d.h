@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/12/01 17:27:42 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/07 14:07:00 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,8 @@
 # define RED 0x0000FFFF
 
 
-int check_up(t_parsing_result *data); 	
 void    click_button(mlx_key_data_t keydata,void *info);
-int check_right(t_parsing_result *data);
-void create_angel(t_parsing_result *data, int wall_x, int wall_y);
-int check_left(t_parsing_result *data);
-int check_down(t_parsing_result *data);
-t_parsing_result	*maps_load(t_parsing_result *data);
 int	close_clik(t_parsing_result *data);
-// void	mlx_put_pixel(t_img *data, int x, int y, int color);
-void create_player(t_parsing_result *data, int player_x, int player_y);
-void draw_angle(t_parsing_result *data, double angle, int line_lenght, long color);
-void	check_position(t_parsing_result *data);
-// void clean_maps(t_parsing_result *data);
-double draw_ray(t_parsing_result *data, double angle, long color);
-int check_walls(double ray_x, double ray_y, t_parsing_result *data);
-void	create_win(t_parsing_result *data);
-void create_elemntry(t_parsing_result *data, int wall_x, int wall_y, int color);
-double find_ray_len(double x, double y);
-void draw3Dstart(t_parsing_result *data);
 void walls(t_parsing_result *data, int i);
 void	start_draw(t_parsing_result *data);
 double len_find(t_parsing_result *data, double angle);

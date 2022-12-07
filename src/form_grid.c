@@ -6,7 +6,7 @@
 /*   By: yuliia <yuliia@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/25 13:34:29 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/07 13:57:01 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char	**malloc_arr(int row, int col)
 void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 {
 	gstate->map[grid->ri][grid->ci] = FLOOR;
-	gstate->player.x = grid->ci;
-	gstate->player.y = grid->ri;
+	gstate->player.x = grid->ci + 0.5;
+	gstate->player.y = grid->ri + 0.5;
 	gstate->player.hitX = 0;
 	gstate->player.game_speed = 0.2;
 	gstate->player.hitX = 0;

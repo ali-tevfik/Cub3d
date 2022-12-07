@@ -10,11 +10,6 @@ SRCS	=	get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
 			main.c\
 			keyboard.c\
-			check_position.c\
-			draw_ray.c\
-			clean_maps.c\
-			create_items.c\
-			load_maps.c\
 			draw3D.c\
 			src/check_map_borders.c\
 			src/colours.c\

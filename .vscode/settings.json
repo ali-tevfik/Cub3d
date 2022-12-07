@@ -26,6 +26,7 @@
         "form_data_structure.h": "c",
         "mlx42.h": "c",
         "initiate_data.h": "c",
-        "glfw3.h": "c"
+        "glfw3.h": "c",
+        "old_draw3d": "c"
     }
 }

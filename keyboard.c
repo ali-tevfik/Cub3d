@@ -14,9 +14,9 @@ void	move(t_parsing_result *data)
 {
 	double moveX;
 	double moveY;
-	int hit = 0;
+	// int hit = 0;
 
-	if (mlx_is_key_down(data->mlx,MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx,MLX_KEY_LEFT))
 	{
 		printf("\n LEFT\n--------------------\n");
 		data->player.pa -= 0.05 * M_PI; 
@@ -29,8 +29,27 @@ void	move(t_parsing_result *data)
 		printf("camera x %f %f\n",data->player.x_camera, data->player.y_camera);
 		printf("position x %f y %f\n",data->player.x, data->player.y);
 	}
-
-	if (mlx_is_key_down(data->mlx,MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	{
+		moveX = data->player.x;
+		moveY = data->player.y + data->player.game_speed * cos(data->player.pa);
+		if (check_move(moveX, moveY,data))
+		{
+			data->player.y = moveY;
+			// data->player.y = moveY;
+		}
+	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	{
+		moveX = data->player.x;
+		moveY = data->player.y - data->player.game_speed * cos(data->player.pa);
+		if (check_move(moveX, moveY,data))
+		{
+			data->player.y = moveY;
+			// data->player.y = moveY;
+		}
+	}
+	if (mlx_is_key_down(data->mlx,MLX_KEY_RIGHT))
 	{
 		printf("\n RIGHT\n--------------------\n");
 		printf("angle before %f\n",data->player.pa  / (M_PI));
@@ -56,7 +75,7 @@ void	move(t_parsing_result *data)
 		if (check_move(moveX, moveY, data))
 		{
 			data->player.x = moveX;
-			hit = 1;
+			// hit = 1;
 			data->player.y = moveY;
 		}
 		printf("player pos after %f %f\n",data->player.x, data->player.y);
@@ -77,21 +96,12 @@ void	move(t_parsing_result *data)
 		{
 			data->player.x = moveX;
 			data->player.y = moveY;
-			hit = 1;
+			// hit = 1;
 		}
-		printf("pos player after x %f %f\n",data->player.x, data->player.y);
 
-		printf("camera %f %f\n",data->player.x_camera, data->player.y_camera);
 
 	}
-
-	// if (hit == 1)
-	// {
-		// clean_maps(data);
-		// maps_load(data);
 		draw_3d(data);
-	// }
-
 }
 
 void	click_button(mlx_key_data_t keydata,void *info)
@@ -101,7 +111,6 @@ void	click_button(mlx_key_data_t keydata,void *info)
 
 	data = (t_parsing_result *) info; 
 	result = -1;
-	
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		mlx_close_window(data->mlx);
