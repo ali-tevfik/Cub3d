@@ -1,6 +1,6 @@
 
-F  1, 2, 3
-C  2, 3, 4
+F 255,255,255
+C 0,0,255
 
 NO  ./textures/brick1.png
 WE  ./textures/brick2.png

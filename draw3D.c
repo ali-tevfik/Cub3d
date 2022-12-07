@@ -43,9 +43,9 @@ void walls(t_parsing_result *data, int i)
     {
         // up
         if (y < half)
-            mlx_put_pixel(data->img, i, y, 0x00A0522D);
+            mlx_put_pixel(data->img, i, y, data->rgb_floor);
         else // down
-            mlx_put_pixel(data->img, i, y, 0x00A0522D);
+            mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
         y++;
     }
     x = 0;
