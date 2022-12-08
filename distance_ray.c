@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:56:24 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 18:05:55 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:24:45 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ double	distance(double angle, t_parsing_result *data, t_calculation *c)
 	double	ca;
 	double	perp_dist;
 
-	ca = data->player.pa - angle;
-	perp_dist = distance * cos(ca);
 	if (data->player.side == 0 || data->player.side == 2)
 		distance = c->side_x - c->delta_x;
 	else
 		distance = c->side_y - c->delta_y;
+	ca = data->player.pa - angle;
+	perp_dist = distance * cos(ca);
 	if (ca < 0)
 		ca += 2 * M_PI;
 	else if (ca > 2 * M_PI)

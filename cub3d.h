@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:00:13 by adoner            #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:00 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:22:51 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_calculation
 	double	delta_y;
 	double	side_x;
 	double	side_y;
-	int		side_x;
-	int		side_y;
+//	int		side_x;
+//	int		side_y;
 	int		hit;
 }			t_calculation;
 
