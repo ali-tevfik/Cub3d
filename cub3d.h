@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: adoner <adoner@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/12/07 14:35:24 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:00:13 by adoner            #+#    #+#             */
+/*   Updated: 2022/12/08 16:45:48 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void	start_draw(t_parsing_result *data);
 double len_find(t_parsing_result *data, double angle);
 void	move(t_parsing_result *data);
 void draw_3d(t_parsing_result *data);
-# endif
+
+#endif
