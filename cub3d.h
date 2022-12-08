@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:00:13 by adoner            #+#    #+#             */
-/*   Updated: 2022/12/08 18:06:50 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:09:00 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_calculation
 	int		side_x;
 	int		side_y;
 	int		hit;
-
 }			t_calculation;
 
 void	click_button(mlx_key_data_t keydata, void *info);
