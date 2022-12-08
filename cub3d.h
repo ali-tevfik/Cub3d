@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/12/07 14:07:00 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/07 14:35:24 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,8 @@
 #define screenWidth 1000
 #define screenHeight 1000
 
-# define texWidth 64
 # define TRUE 1
 # define FALSE 0
-# define PI 3.14159265359
-# define BLACK 0X000000
-# define BLAUW 0X0000FF
-# define RED 0x0000FFFF
 
 
 void    click_button(mlx_key_data_t keydata,void *info);

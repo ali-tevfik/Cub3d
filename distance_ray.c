@@ -60,9 +60,9 @@ double len_find(t_parsing_result *data, double angle)
         distance = sideY - deltaY;
     double ca = data->player.pa - angle;
     if (ca < 0)
-			ca += 2 * PI;
-	else if ( ca > 2 * PI)
-			ca -= 2 * PI;
+			ca += 2 * M_PI;
+	else if ( ca > 2 * M_PI)
+			ca -= 2 * M_PI;
     double perp_dist = distance * cos(ca) ;
     perp_dist = fabs(perp_dist);
     if (data->player.side == EAST || data->player.side == WEST)

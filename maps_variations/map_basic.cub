@@ -1,7 +1,7 @@
-NO  ./Users/adoner/Desktop/before_merge/download.png
-WE  ./Users/adoner/Desktop/before_merge/download.png
-EA  ./Users/adoner/Desktop/before_merge/download.png
-SO  ./Users/adoner/Desktop/before_merge/download.png
+NO  ./textures/brick1.png
+WE  ./textures/brick2.png
+EA  ./textures/brick3.png
+SO  ./textures/brick4.png
 
 
 F 220,100,0
@@ -12,7 +12,7 @@ F 220,100,0
 111111111011000001110000000000001
 111110010000000000000000000011111
 111111111011000001110000000000001
-100000000011000001110111111111111
+100000000011000001110111100111111
 111101111111110111000000100011111
 111101111111110111010100100011111
 11000000110101011100000010001111

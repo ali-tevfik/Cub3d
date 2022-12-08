@@ -15,6 +15,11 @@ void	free_all(t_parsing_result *data)
 	free(data->so);
 	free(data->ea);
 	free(data->we);
+	mlx_delete_texture(data->texture[0]);
+	mlx_delete_texture(data->texture[1]);
+	mlx_delete_texture(data->texture[2]);
+	mlx_delete_texture(data->texture[3]);
+	mlx_delete_image(data->mlx, data->img);
 
 	//leaks -> not sure where they are 
 }
@@ -36,8 +41,8 @@ void	start_draw(t_parsing_result *data)
 	draw_3d(data);
 	mlx_key_hook(data->mlx, &click_button, data);
 	mlx_loop(data->mlx);
-	mlx_terminate(data->mlx);
 	free_all(data);
+	mlx_terminate(data->mlx);
 }
 
 void	leaks(void){

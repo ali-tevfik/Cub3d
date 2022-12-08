@@ -27,6 +27,7 @@
         "mlx42.h": "c",
         "initiate_data.h": "c",
         "glfw3.h": "c",
-        "old_draw3d": "c"
+        "old_draw3d": "c",
+        "complex": "c"
     }
 }
