@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   form_grid.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/08 15:17:26 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   form_grid.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:52:18 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/12/08 17:10:49 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 	gstate->player.x = grid->ci + 0.5;
 	gstate->player.y = grid->ri + 0.5;
 	gstate->player.hit_x = 0;
-	gstate->player.game_speed = 0.2;
+	gstate->player.game_speed = 1;
 	gstate->player.hit_x = 0;
 	if (c == 'N')
 		gstate->player.pa = 1.5 * M_PI;

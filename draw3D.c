@@ -7,8 +7,6 @@ static int	get_rgba(mlx_texture_t* texture, int x, int y)
 	int	g;
 	int	b;
 	int	a;
-    x %= texture->width;
-    y %= texture->height;
 	r = texture->pixels[y * texture->width * 4 + (x * 4)];
 	g = texture->pixels[y * texture->width * 4 + (x * 4) + 1];
 	b = texture->pixels[y * texture->width * 4 + (x * 4) + 2];
@@ -16,11 +14,7 @@ static int	get_rgba(mlx_texture_t* texture, int x, int y)
     return (r << 24 | g << 16 | b << 8 | a);
 }
 
-unsigned int    create_colour(unsigned char r, unsigned char g, unsigned char b
-                , unsigned char a)
-{
-    return ((unsigned int)(a << 24 | b << 16 | g << 8 | r));
-}
+
 void walls(t_parsing_result *data, int i)
 {
     int y;
@@ -47,7 +41,7 @@ void walls(t_parsing_result *data, int i)
     {
         // up
         if (y < half)
-            mlx_put_pixel(data->img, i, y, create_colour(150,206,233,255));
+            mlx_put_pixel(data->img, i, y, data->rgb_floor);
         else // down
             mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
         y++;
@@ -67,11 +61,11 @@ void walls(t_parsing_result *data, int i)
         text_start = 0.0;
     }
     
-    double step = 1.0 * data->texture[0]->height / height;
+    double step = 1.0 * tex->height / height;
     // up walls
     while (x < bottom - top)
     {
-        if (data->player.side == WEST || data->player.side == NORTH)
+        if (data->player.side == EAST || data->player.side == NORTH)
             color =  get_rgba(tex,
                 ((unsigned int)((1.0 - data->player.wall_x) * tex->width)),
                 ((unsigned int)(text_start + x * step)));

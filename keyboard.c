@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   keyboard.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 15:25:19 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 16:47:15 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   keyboard.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/12/08 15:25:19 by ydemura       #+#    #+#                 */
+/*   Updated: 2022/12/08 17:05:46 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "key_moves.h"
 
 int	check_move(int x, int y, t_parsing_result *data)
 {
