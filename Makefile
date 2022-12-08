@@ -9,7 +9,6 @@ GLFW_LIB = -L /opt/homebrew/Cellar/glfw/3.3.8/lib # iMac
 SRCS	=	get_next_line/get_next_line.c\
 			get_next_line/get_next_line_utils.c\
 			main.c\
-			keyboard.c\
 			draw3D.c\
 			src/check_map_borders.c\
 			src/colours.c\
@@ -23,7 +22,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			src/parsing_gamestate.c\
 			src/textures.c\
 			distance_ray.c\
-			keyboard.c 
+			keyboard.c \
+			key_moves.c
 
 OBJS	= $(SRCS:.c=.o)
 

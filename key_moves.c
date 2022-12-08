@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   key_moves.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 16:43:28 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 17:21:52 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   key_moves.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/12/08 16:43:28 by ydemura       #+#    #+#                 */
+/*   Updated: 2022/12/08 18:27:38 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/parsing_gamestate.h"
+#include "cub3d.h"
+#include "key_moves.h"
 #include <math.h>
 
 void	key_left(t_parsing_result *data)
