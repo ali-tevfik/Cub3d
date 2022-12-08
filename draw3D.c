@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:11:35 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 18:16:58 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:18:48 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static int	get_rgba(mlx_texture_t *texture, int x, int y)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b
-		, unsigned char a)
-{
-	return ((unsigned int)(a << 24 | b << 16 | g << 8 | r));
-}
+// unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b
+// 		, unsigned char a)
+// {
+// 	return ((unsigned int)(a << 24 | b << 16 | g << 8 | r));
+// }
 
 void	walls(t_parsing_result *data, int i)
 {
@@ -60,7 +60,7 @@ void	walls(t_parsing_result *data, int i)
 	{
 		// up
 		if (y < half)
-			mlx_put_pixel(data->img, i, y, create_colour(150,206,233,255));
+			mlx_put_pixel(data->img, i, y, data->rgb_floor);
 		else // down
 			mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
 		y++;
@@ -91,9 +91,9 @@ void	walls(t_parsing_result *data, int i)
 					((unsigned int)(text_start + x * step)));
 		else
 			color = get_rgba(tex,
-					((unsigned int)(( data->player.wall_x) * tex->width)),
+					((unsigned int)((data->player.wall_x) * tex->width)),
 					((unsigned int)(text_start + x * step)));
-		mlx_put_pixel(data->img, i,  x + top, color);
+		mlx_put_pixel(data->img, i, x + top, color);
 		x++;
 	}
     i++;
