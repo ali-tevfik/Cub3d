@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   colours.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:51:50 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/20 16:22:46 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   colours.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
+/*   Updated: 2022/12/08 13:39:10 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../includes/map_utils.h"
 #include "../includes/error_handling.h"
 #include "../libft/libft.h"
+
+//http://www.shodor.org/~efarrow/trunk/html/rgbint.html - calculator for color
 
 unsigned int	color_maker(int red, int green, int blue, t_data *data)
 {

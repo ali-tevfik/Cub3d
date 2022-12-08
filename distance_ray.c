@@ -66,10 +66,10 @@ double len_find(t_parsing_result *data, double angle)
     double perp_dist = distance * cos(ca) ;
     perp_dist = fabs(perp_dist);
     if (data->player.side == EAST || data->player.side == WEST)
-        data->player.wallX = data->player.y + rayY * perp_dist;
+        data->player.wall_x = data->player.y + rayY * perp_dist;
     else
-        data->player.wallX = data->player.x + rayX * perp_dist;
-    data->player.wallX -= floorf(data->player.wallX);
+        data->player.wall_x = data->player.x + rayX * perp_dist;
+    data->player.wall_x -= floorf(data->player.wall_x);
 
 
     return (perp_dist);

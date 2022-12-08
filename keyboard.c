@@ -1,25 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/08 15:25:19 by ydemura           #+#    #+#             */
+/*   Updated: 2022/12/08 15:30:45 by ydemura          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int check_move(int x, int y, t_parsing_result *data)
+int	check_move(int x, int y, t_parsing_result *data)
 {
 	if (data->len_cols > x && data->len_rows > y && x > 0 && y > 0)
 	{
 		if (data->map[y][x] == '1')
-			return FALSE;
+			return (FALSE);
 		return (TRUE);
 	}
 	return (FALSE);
 }
 void	move(t_parsing_result *data)
 {
-	double moveX;
-	double moveY;
+	double	move_x;
+	double	move_y;
 	// int hit = 0;
-
 	if (mlx_is_key_down(data->mlx,MLX_KEY_LEFT))
 	{
 		printf("\n LEFT\n--------------------\n");
-		data->player.pa -= 0.08 * M_PI; 
+		data->player.pa -= 0.08 * M_PI;
 		printf("angle = %f\n", data->player.pa / (M_PI));
 		if (data->player.pa < 0)
 			data->player.pa += 2 * M_PI;
@@ -31,23 +42,25 @@ void	move(t_parsing_result *data)
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 	{
-		moveX = data->player.x + data->player.game_speed * cos(data->player.pa - 0.5 * M_PI);
-		moveY = data->player.y + data->player.game_speed * sin(data->player.pa - 0.5 * M_PI);
-		if (check_move(moveX, moveY,data))
+		move_x = data->player.x + data->player.game_speed
+			* cos(data->player.pa - 0.5 * M_PI);
+		move_y = data->player.y + data->player.game_speed
+			* sin(data->player.pa - 0.5 * M_PI);
+		if (check_move(move_x, move_y,data))
 		{
-			data->player.y = moveY;
-			data->player.x = moveX;
+			data->player.y = move_y;
+			data->player.x = move_x;
 		}
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 	{
 
-		moveX = data->player.x + data->player.game_speed * cos(data->player.pa + 0.5 * M_PI);
-		moveY = data->player.y + data->player.game_speed * sin(data->player.pa + 0.5 * M_PI);
-		if (check_move(moveX, moveY,data))
+		move_x = data->player.x + data->player.game_speed * cos(data->player.pa + 0.5 * M_PI);
+		move_y = data->player.y + data->player.game_speed * sin(data->player.pa + 0.5 * M_PI);
+		if (check_move(move_x, move_y,data))
 		{
-			data->player.y = moveY;
-			data->player.x = moveX;
+			data->player.y = move_y;
+			data->player.x = move_x;
 		}
 	
 	}
@@ -72,13 +85,13 @@ void	move(t_parsing_result *data)
 		// data->player.x -= data->player.x_camera;
 		// data->player.y -= data->player.y_camera;
 		printf("before position %f %f\n",data->player.x, data->player.y);
-		moveX = data->player.x - data->player.game_speed * cos(data->player.pa);
-		moveY = data->player.y - data->player.game_speed * sin(data->player.pa);
-		if (check_move(moveX, moveY, data))
+		move_x = data->player.x - data->player.game_speed * cos(data->player.pa);
+		move_y = data->player.y - data->player.game_speed * sin(data->player.pa);
+		if (check_move(move_x, move_y, data))
 		{
-			data->player.x = moveX;
+			data->player.x = move_x;
 			// hit = 1;
-			data->player.y = moveY;
+			data->player.y = move_y;
 		}
 		printf("player pos after %f %f\n",data->player.x, data->player.y);
 		printf("camera %f %f\n",data->player.x_camera, data->player.y_camera);
@@ -92,12 +105,12 @@ void	move(t_parsing_result *data)
 		// data->player.x += data->player.x_camera;
 		// data->player.y += data->player.y_camera;
 		printf("pos player beforeup %f %f max x %d max y %d\n",data->player.x, data->player.y, data->len_cols, data->len_rows);
-		moveX = data->player.x + data->player.game_speed * cos(data->player.pa);
-		moveY = data->player.y + data->player.game_speed * sin(data->player.pa);
-		if (check_move(moveX, moveY, data))
+		move_x = data->player.x + data->player.game_speed * cos(data->player.pa);
+		move_y = data->player.y + data->player.game_speed * sin(data->player.pa);
+		if (check_move(move_x, move_y, data))
 		{
-			data->player.x = moveX;
-			data->player.y = moveY;
+			data->player.x = move_x;
+			data->player.y = move_y;
 			// hit = 1;
 		}
 
