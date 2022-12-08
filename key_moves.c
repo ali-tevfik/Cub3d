@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/08 16:43:28 by ydemura       #+#    #+#                 */
-/*   Updated: 2022/12/08 18:27:38 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/08 20:21:03 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	key_left(t_parsing_result *data)
 {
 	printf("\n LEFT\n--------------------\n");
-	data->player.pa -= 0.08 * M_PI;
+	data->player.pa -= 0.05 * M_PI;
 	printf("angle = %f\n", data->player.pa / (M_PI));
 	if (data->player.pa < 0)
 		data->player.pa += 2 * M_PI;
@@ -32,7 +32,7 @@ void	key_right(t_parsing_result *data)
 {
 	printf("\n RIGHT\n--------------------\n");
 	printf("angle before %f\n", data->player.pa  / (M_PI));
-	data->player.pa += 0.08 * M_PI;
+	data->player.pa += 0.05 * M_PI;
 	if (data->player.pa > 2 * M_PI)
 		data->player.pa -= 2 * M_PI;
 	data->player.x_camera = cos(data->player.pa) * 5.0;

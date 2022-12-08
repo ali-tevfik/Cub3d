@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw3D.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 18:11:35 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 18:20:47 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   draw3D.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/12/08 18:11:35 by ydemura       #+#    #+#                 */
+/*   Updated: 2022/12/08 20:41:40 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@ static int	get_rgba(mlx_texture_t *texture, int x, int y)
 	int	g;
 	int	b;
 	int	a;
-
-	x %= texture->width;
-	y %= texture->height;
 	r = texture->pixels[y * texture->width * 4 + (x * 4)];
 	g = texture->pixels[y * texture->width * 4 + (x * 4) + 1];
 	b = texture->pixels[y * texture->width * 4 + (x * 4) + 2];
 	a = texture->pixels[y * texture->width * 4 + (x * 4) + 3];
-	return (r << 24 | g << 16 | b << 8 | a);
+    return (r << 24 | g << 16 | b << 8 | a);
 }
 
 // unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b
@@ -64,7 +61,9 @@ void	walls(t_parsing_result *data, int i)
 		else // down
 			mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
 		y++;
+
 	}
+	
 	x = 0;
 	double text_start;
 	mlx_texture_t *tex = data->texture[data->player.side];
@@ -81,11 +80,13 @@ void	walls(t_parsing_result *data, int i)
 		bottom = (data->img->height + height) / 2;
 		text_start = 0.0;
 	}
-	double step = 1.0 * data->texture[0]->height / height;
+	double step = 1.0 * tex->height/ height;
+
 	// up walls
 	while (x < bottom - top)
 	{
-		if (data->player.side == WEST || data->player.side == NORTH)
+	
+		if (data->player.side == EAST || data->player.side == NORTH)
 			color = get_rgba(tex,
 					((unsigned int)((1.0 - data->player.wall_x) * tex->width)),
 					((unsigned int)(text_start + x * step)));
