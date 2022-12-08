@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 11:19:34 by adoner        #+#    #+#                 */
-/*   Updated: 2021/02/24 22:51:28 by catalina      ########   odam.nl         */
+/*   Updated: 2022/12/08 21:47:09 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (s1 == NULL)
 		return (NULL);
 	else if (set == NULL)
-		return ((char*)s1);
+		return ((char *)s1);
 	i = 0;
 	first = first_check(s1, set);
 	end = endcheck(s1, set, first);
-	s = (char*)malloc(ft_strlen(s1) - first - end + 1);
+	s = (char *)malloc(ft_strlen(s1) - first - end + 1);
 	if (!s)
 		return (NULL);
 	while (first < (ft_strlen(s1) - end))

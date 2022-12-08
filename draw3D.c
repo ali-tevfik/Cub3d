@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/08 18:11:35 by ydemura       #+#    #+#                 */
-/*   Updated: 2022/12/08 20:41:40 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/08 21:21:33 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,15 @@ void	walls(t_parsing_result *data, int i)
 	int finish = SCREENHEIGHT;
 	int half = (finish - start) / 2;
 	int top, bottom;
-	double half_height;
 	int x;
 	unsigned int color = 0;
 
 	height = SCREENHEIGHT / data->player.ray;
-	if (height > SCREENHEIGHT)
-		height = SCREENHEIGHT;
-	if (height < 0)
-		height = 0;
-	half_height = height / 2;
-	y = start;
-	while (y < finish)
-	{
-		// up
-		if (y < half)
-			mlx_put_pixel(data->img, i, y, data->rgb_floor);
-		else // down
-			mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
-		y++;
-
-	}
 	
 	x = 0;
 	double text_start;
 	mlx_texture_t *tex = data->texture[data->player.side];
-	if (height > data->img->height)
+	if (height >= data->img->height)
 	{
 		top = 0;
 		bottom = data->img->height - 1;
@@ -81,6 +64,19 @@ void	walls(t_parsing_result *data, int i)
 		text_start = 0.0;
 	}
 	double step = 1.0 * tex->height/ height;
+	
+	y = start;
+	while (y < finish)
+	{
+		// up
+		if (y < half)
+			mlx_put_pixel(data->img, i, y, data->rgb_floor);
+		else // down
+			mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
+		y++;
+
+	}
+	
 
 	// up walls
 	while (x < bottom - top)

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 11:28:06 by adoner        #+#    #+#                 */
-/*   Updated: 2022/11/20 15:51:03 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/08 21:47:06 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ const char *needle, size_t len)
 
 	x = 0;
 	if (*(needle) == '\0')
-		return ((char*)haystack);
+		return ((char *)haystack);
 	if (len == 0)
 		return (0);
 	while (*(haystack + x) != '\0' && x < len)
@@ -49,7 +49,7 @@ const char *needle, size_t len)
 		if (*(haystack + x) == *(needle + 0))
 		{
 			if (check((haystack + x), (needle), len, x) == 1)
-				return ((char*)(haystack + x));
+				return ((char *)(haystack + x));
 		}
 		x++;
 	}

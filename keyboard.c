@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   keyboard.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 15:25:19 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 17:37:53 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   keyboard.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/12/08 15:25:19 by ydemura       #+#    #+#                 */
+/*   Updated: 2022/12/08 21:45:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,15 @@ void	key_w(t_parsing_result *data)
 	double	move_x;
 	double	move_y;
 
-	printf("\n UP\n--------------------\n");
-	printf(" before angle = %f\n", data->player.pa / (M_PI));
-	// data->player.x += data->player.x_camera;
-	// data->player.y += data->player.y_camera;
-	printf("pos player beforeup %f %f max x %d max y %d\n",data->player.x, data->player.y, data->len_cols, data->len_rows);
 	move_x = data->player.x + data->player.game_speed * cos(data->player.pa);
 	move_y = data->player.y + data->player.game_speed * sin(data->player.pa);
 	if (check_move(move_x, move_y, data))
 	{
 		data->player.x = move_x;
 		data->player.y = move_y;
-		// hit = 1;
 	}
 }
 
-	// int hit = 0;
 void	move(t_parsing_result *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))

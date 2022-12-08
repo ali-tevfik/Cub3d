@@ -6,7 +6,7 @@
 /*   By: adoner <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 13:33:02 by adoner        #+#    #+#                 */
-/*   Updated: 2021/02/24 22:48:59 by catalina      ########   odam.nl         */
+/*   Updated: 2022/12/08 21:47:01 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	word_count = how_many_word(s, c);
 	size_word_count = 0;
-	s1 = (char**)malloc(sizeof(s) * (word_count + 1));
+	s1 = (char **)malloc(sizeof(s) * (word_count + 1));
 	if (!s1)
 		return (NULL);
 	while (word_count > size_word_count)

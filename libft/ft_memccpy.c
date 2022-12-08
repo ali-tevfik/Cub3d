@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_memccpy.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: adoner <adoner@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/11/16 11:25:52 by adoner        #+#    #+#                 */
-/*   Updated: 2021/02/24 22:46:28 by catalina      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adoner <adoner@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/08 21:48:50 by adoner            #+#    #+#             */
+/*   Updated: 2022/12/08 21:49:17 by adoner           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memccpy(void *dst, const void *src,
 	{
 		*(dst1 + i) = *(src1 + i);
 		if (*(src1 + i) == (char)c)
-			return ((void*)(dst1 + i + 1));
+			return ((void *)(dst1 + i + 1));
 		i++;
 	}
 	return (NULL);
