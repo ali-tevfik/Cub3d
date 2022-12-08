@@ -22,7 +22,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			src/map_utils.c\
 			src/parsing_gamestate.c\
 			src/textures.c\
-			distance_ray.c
+			distance_ray.c\
+			keyboard.c 
 
 OBJS	= $(SRCS:.c=.o)
 

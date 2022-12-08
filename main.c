@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:21:31 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 15:25:06 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:08:13 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	free_all(t_parsing_result *data)
 
 void	create_win(t_parsing_result *data)
 {
-	data->mlx = mlx_init((const uint32_t)screenWidth,
-			(const uint32_t)screenHeight, "Cub3d", false);
+	data->mlx = mlx_init((const uint32_t)SCREENWIDTH,
+			(const uint32_t)SCREENHEIGHT, "Cub3d", false);
 	if (!data->mlx)
 		exit(EXIT_FAILURE);
-	data->img = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	data->img = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
 }
 
 void	start_draw(t_parsing_result *data)

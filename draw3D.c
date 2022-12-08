@@ -28,16 +28,16 @@ void walls(t_parsing_result *data, int i)
     double height;
     // int start_wall= 0;
     int start = 0;
-    int finish = screenHeight;
+    int finish = SCREENHEIGHT;
     int half = (finish - start) / 2;
     int top, bottom;
     double half_height;
     int x;
     unsigned int color = 0;
 
-    height = screenHeight / data->player.ray;
-    if (height > screenHeight)
-        height = screenHeight;
+    height = SCREENHEIGHT / data->player.ray;
+    if (height > SCREENHEIGHT)
+        height = SCREENHEIGHT;
     if (height < 0)
         height = 0;
 

@@ -6,11 +6,12 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:43:28 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/08 16:46:45 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:21:52 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "key_moves.h"
+#include "includes/parsing_gamestate.h"
+#include <math.h>
 
 void	key_left(t_parsing_result *data)
 {
