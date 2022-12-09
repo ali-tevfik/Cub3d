@@ -3,7 +3,7 @@ F  12,       64 ,       18
 C 150 , 206, 233
 
 
-NO textures/set1.png
+NO ./textures/set1.png
 WE textures/set2.png
 EA textures/set3.png
 SO textures/set4.png
@@ -11,7 +11,7 @@ SO textures/set4.png
 11111111111111
 11000000000001
 11100000001101
-1100000W000001          
-11000000000011
+11000000000011          
+110000000W0011
 10000000001101
 11111111111111
