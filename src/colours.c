@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -7,6 +8,15 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
 /*   Updated: 2022/12/09 13:56:56 by ydemura          ###   ########.fr       */
+=======
+/*                                                        ::::::::            */
+/*   colours.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: adoner <adoner@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/31 19:51:50 by yuliia        #+#    #+#                 */
+/*   Updated: 2022/12/09 13:52:45 by adoner        ########   odam.nl         */
+>>>>>>> 76e44646f9ff204c8a8eb8e7afe03ac119eeb0c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +27,7 @@
 #include <stdio.h>
 
 //http://www.shodor.org/~efarrow/trunk/html/rgbint.html - calculator for color
-unsigned int	color_maker(int red, int green, int blue)
+unsigned int	color_maker(int r, int g, int b)
 {
 	unsigned int	alpha;
 	unsigned int	res;
