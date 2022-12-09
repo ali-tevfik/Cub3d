@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/12/09 11:27:21 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/09 12:06:43 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ typedef struct s_calculation
 	double	sideY;
 	int		hit;
 }			t_calculation;
+
+typedef struct	s_draw_info
+{
+	int				top;
+	int				bottom;
+	unsigned int	color;
+	double			step;
+	mlx_texture_t	*tex;
+	double text_start;
+}				t_draw_info;
 
 void	click_button(mlx_key_data_t keydata, void *info);
 int		close_clik(t_parsing_result *data);

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   draw3D.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*   By: adoner <adoner@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/08 18:11:35 by ydemura       #+#    #+#                 */
-/*   Updated: 2022/12/08 21:21:33 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/09 12:15:05 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,79 +19,73 @@ static int	get_rgba(mlx_texture_t *texture, int x, int y)
 	int	g;
 	int	b;
 	int	a;
+
 	r = texture->pixels[y * texture->width * 4 + (x * 4)];
 	g = texture->pixels[y * texture->width * 4 + (x * 4) + 1];
 	b = texture->pixels[y * texture->width * 4 + (x * 4) + 2];
 	a = texture->pixels[y * texture->width * 4 + (x * 4) + 3];
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-// unsigned int	create_colour(unsigned char r, unsigned char g, unsigned char b
-// 		, unsigned char a)
-// {
-// 	return ((unsigned int)(a << 24 | b << 16 | g << 8 | r));
-// }
-
-void	walls(t_parsing_result *data, int i)
+void	draw_ceiling_and_floor(t_parsing_result *data, int i)
 {
-	int	y;
+	int	half;
+	int	start;
 
-	double height;
-	// int start_wall= 0;
-	int start = 0;
-	int finish = SCREENHEIGHT;
-	int half = (finish - start) / 2;
-	int top, bottom;
-	int x;
-	unsigned int color = 0;
+	start = 0;
+	half = (SCREENHEIGHT - start) / 2;
+	while (start < SCREENHEIGHT)
+	{
+		if (start < half)
+			mlx_put_pixel(data->img, i, start, data->rgb_floor);
+		else
+			mlx_put_pixel(data->img, i, start, data->rgb_ceiling);
+		start++;
+	}
+}
 
-	height = SCREENHEIGHT / data->player.ray;
-	
-	x = 0;
-	double text_start;
-	mlx_texture_t *tex = data->texture[data->player.side];
+void	fill_info(t_draw_info *info, t_parsing_result *data, double height)
+{
+	info->tex = data->texture[data->player.side];
 	if (height >= data->img->height)
 	{
-		top = 0;
-		bottom = data->img->height - 1;
-		text_start = (((1 - (1.0 * data->img->height / height)) / 2.0)
-				* tex->height);
+		info->top = 0;
+		info->bottom = data->img->height - 1;
+		info->text_start = (((1 - (1.0 * data->img->height / height)) / 2.0)
+				* info->tex->height);
 	}
 	else
 	{
-		top = (data->img->height - height) / 2;
-		bottom = (data->img->height + height) / 2;
-		text_start = 0.0;
+		info->top = (data->img->height - height) / 2;
+		info->bottom = (data->img->height + height) / 2;
+		info->text_start = 0.0;
 	}
-	double step = 1.0 * tex->height/ height;
-	
-	y = start;
-	while (y < finish)
-	{
-		// up
-		if (y < half)
-			mlx_put_pixel(data->img, i, y, data->rgb_floor);
-		else // down
-			mlx_put_pixel(data->img, i, y, data->rgb_ceiling);
-		y++;
+	info->step = 1.0 * info->tex->height / height;
+}
 
-	}
-	
+void	walls(t_parsing_result *data, int i)
+{
+	double		height;
+	int			x;
+	t_draw_info	info;
 
-	// up walls
-	while (x < bottom - top)
+	height = SCREENHEIGHT / data->player.ray;
+	x = 0;
+	fill_info(&info, data, height);
+	draw_ceiling_and_floor(data, i);
+	while (x < info.bottom - info.top)
 	{
-	
 		if (data->player.side == EAST || data->player.side == NORTH)
-			color = get_rgba(tex,
-					((unsigned int)((1.0 - data->player.wall_x) * tex->width)),
-					((unsigned int)(text_start + x * step)));
+			info.color = get_rgba(info.tex,
+					((unsigned int)((1.0 - data->player.wall_x)
+							* info.tex->width)),
+					((unsigned int)(info.text_start + x * info.step)));
 		else
-			color = get_rgba(tex,
-					((unsigned int)((data->player.wall_x) * tex->width)),
-					((unsigned int)(text_start + x * step)));
-		mlx_put_pixel(data->img, i, x + top, color);
+			info.color = get_rgba(info.tex,
+					((unsigned int)((data->player.wall_x) * info.tex->width)),
+					((unsigned int)(info.text_start + x * info.step)));
+		mlx_put_pixel(data->img, i, x + info.top, info.color);
 		x++;
 	}
-    i++;
+	i++;
 }
