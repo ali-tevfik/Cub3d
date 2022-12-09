@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/08 13:39:10 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:53:06 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,36 @@
 #include "../includes/map_utils.h"
 #include "../includes/error_handling.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 //http://www.shodor.org/~efarrow/trunk/html/rgbint.html - calculator for color
-
-unsigned int	color_maker(int red, int green, int blue, t_data *data)
+unsigned int	color_maker(int red, int green, int blue)
 {
-	int	transperant;
-	//unused data???
-	data = NULL;
+	unsigned int	transperant;
+	unsigned int	decimal_res;
+	unsigned int	hexadecimal_res;
+	char			*temp_str;
+
 	transperant = 0;
+	decimal_res = 0;
+	hexadecimal_res = 0;
 	if ((red >= 0 && red <= 255) && (green >= 0 && green <= 255)
 		&& (blue >= 0 && blue <= 255))
-		return (transperant << 24 | red << 16 | green << 8 | blue);
+		decimal_res = ((unsigned int)(transperant << 24
+					| red << 16 | green << 8 | blue));
 	else
 		error_message_exit(ERR_COLOUR);
-	return (-1);
+
+	temp_str = ft_itoa(decimal_res);
+	if (temp_str == NULL)
+		error_message_exit(ERR_MALLOC);
+	hexadecimal_res = my_atoi_hex(temp_str);
+	printf("CHECK color dec: %d\n", decimal_res);
+	printf("CHECK color hex: %x\n", hexadecimal_res);
+	free(temp_str);
+
+	return (hexadecimal_res);
 }
 
 int	number_collection(char *str, t_data *data, char c, int *n_array)
@@ -50,9 +65,9 @@ int	number_collection(char *str, t_data *data, char c, int *n_array)
 		str++;
 	if (c == 'C')
 		data->rgb_ceiling = color_maker(n_array[0], n_array[1],
-				n_array[2], data);
+				n_array[2]);
 	if (c == 'F')
-		data->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2], data);
+		data->rgb_floor = color_maker(n_array[0], n_array[1], n_array[2]);
 	return (1);
 }
 
