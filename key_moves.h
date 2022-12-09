@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   key_moves.h                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ydemura <ydemura@student.42.fr>              +#+                     */
+/*   By: adoner <adoner@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/08 16:43:25 by ydemura       #+#    #+#                 */
-/*   Updated: 2022/12/08 18:28:18 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/09 12:55:41 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	key_right(t_parsing_result *data);
 void	key_a(t_parsing_result *data);
 void	key_s(t_parsing_result *data);
 void	key_d(t_parsing_result *data);
-int	check_move(int x, int y, t_parsing_result *data);
+int		check_move(int x, int y, t_parsing_result *data);
 
 #endif

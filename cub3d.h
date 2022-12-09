@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
-/*   Updated: 2022/12/09 12:17:26 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/09 12:57:54 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@
 
 typedef struct s_calculation
 {
-	int			mapX;
-	int			mapY;
-	int			stepX;
-	int			stepY;
-	double		rayX;
-	double		rayY;
-	double		deltaX;
-	double		deltaY;
-	double		sideX;
-	double		sideY;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	double		ray_x;
+	double		ray_y;
+	double		delta_x;
+	double		delta_y;
+	double		side_x;
+	double		side_y;
 	int			hit;
 }				t_calculation;
 
-typedef	struct		s_draw_info
+typedef struct s_draw_info
 {
 	int				top;
 	int				bottom;
 	unsigned int	color;
 	double			step;
 	mlx_texture_t	*tex;
-	double 			text_start;
+	double			text_start;
 }					t_draw_info;
 
 void	click_button(mlx_key_data_t keydata, void *info);
