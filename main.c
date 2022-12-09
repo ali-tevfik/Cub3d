@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 15:21:31 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/09 10:40:55 by ydemura          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: adoner <adoner@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/12/08 15:21:31 by ydemura       #+#    #+#                 */
+/*   Updated: 2022/12/09 12:46:22 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	start_draw(t_parsing_result *data)
 	mlx_terminate(data->mlx);
 }
 
-// void	leaks(void)
-// {
-// 	system("leaks -q cub3d");
-// }
+void	leaks(void)
+{
+	system("leaks -q cub3d");
+}
 
 void	fill_text(t_parsing_result *data)
 {
@@ -76,8 +76,9 @@ int	main(int argc, const char **argv)
 {
 	t_parsing_result	data;
 
-	//atexit(leaks);
+	atexit(leaks);
 	data = parsing(argv, argc);
 	fill_text(&data);
 	start_draw(&data);
+	
 }	

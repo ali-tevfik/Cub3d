@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/08 18:11:35 by ydemura       #+#    #+#                 */
-/*   Updated: 2022/12/09 12:15:05 by adoner        ########   odam.nl         */
+/*   Updated: 2022/12/09 12:52:39 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	draw_ceiling_and_floor(t_parsing_result *data, int i)
 	while (start < SCREENHEIGHT)
 	{
 		if (start < half)
-			mlx_put_pixel(data->img, i, start, data->rgb_floor);
-		else
 			mlx_put_pixel(data->img, i, start, data->rgb_ceiling);
+		else
+			mlx_put_pixel(data->img, i, start, data->rgb_floor);
 		start++;
 	}
 }
