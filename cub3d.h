@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adoner <adoner@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 16:00:13 by adoner            #+#    #+#             */
-/*   Updated: 2022/12/08 21:50:28 by adoner           ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: adoner <adoner@student.42.fr>                +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/03 16:00:13 by adoner        #+#    #+#                 */
+/*   Updated: 2022/12/09 11:27:21 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@
 //for distance_ray.c
 typedef struct s_calculation
 {
-	int		map_x;
-	int		map_y;
-	double	ray_x;
-	double	ray_y;
-	double	delta_x;
-	double	delta_y;
-	double	side_x;
-	double	side_y;
+	int		mapX;
+	int		mapY;
+	int		stepX;
+	int		stepY;
+	double	rayX;
+	double	rayY;
+	double	deltaX;
+	double	deltaY;
+	double	sideX;
+	double	sideY;
 	int		hit;
 }			t_calculation;
 
