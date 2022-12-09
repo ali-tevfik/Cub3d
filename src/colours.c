@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/09 13:17:59 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:56:56 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 #include "../includes/map_utils.h"
 #include "../includes/error_handling.h"
 #include "../libft/libft.h"
+#include <stdio.h>
 
 //http://www.shodor.org/~efarrow/trunk/html/rgbint.html - calculator for color
 unsigned int	color_maker(int red, int green, int blue)
 {
-	unsigned int	transperant;
+	unsigned int	alpha;
+	unsigned int	res;
 
-	transperant = 255;
+	alpha = 255;
+	res = 0;
 	if ((red >= 0 && red <= 255) && (green >= 0 && green <= 255)
 		&& (blue >= 0 && blue <= 255))
-		return ((unsigned int)(transperant << 24 | (unsigned int)red << 16
-			| (unsigned int)green << 8 | (unsigned int)blue));
+		res = ((unsigned int)(red << 24 | green << 16 | blue << 8 | alpha));
 	else
 		error_message_exit(ERR_COLOUR);
-	return (-1);
+
+	// printf("\n\nCOLOR CHECHK\ndecimal: %d\n hexad: %x\n", res, res);
+	// error_message_exit(ERR_COLOUR);
+	return (res);
 }
 
 int	number_collection(char *str, t_data *data, char c, int *n_array)
