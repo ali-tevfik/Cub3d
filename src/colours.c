@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/09 14:01:57 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:32:55 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	digit_pattern(const char *str)
 	i = 0;
 	while (is_maze_space(str[i]))
 		i++;
+	if (ft_isdigit(str[i]) == 0)
+		error_message_exit(ERR_COLOUR);
 	while (ft_isdigit(str[i]) == 1)
 		i++;
 	while (is_maze_space(str[i]))
