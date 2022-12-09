@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:05 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/02 14:41:37 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:15:47 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void	initiate_gnl_struct(t_gnl *gnl)
 	gnl->temp[gnl->len] = '\0';
 }
 
+void	resize(t_gnl	*gnl)
+{
+	gnl->len = gnl->len * 2;
+	gnl->temp = m_realloc(gnl->temp, gnl->len);
+}
+
 int	exam_get_next_line(int fd, char **line)
 {
 	t_gnl	gnl;
@@ -60,15 +66,11 @@ int	exam_get_next_line(int fd, char **line)
 		{
 			free(gnl.temp);
 			return (gnl.res);
-		}
-			
+		}	
 		gnl.temp[gnl.conter] = gnl.c;
 		gnl.conter++;
 		if (gnl.conter == gnl.len)
-		{
-			gnl.len = gnl.len * 2;
-			gnl.temp = m_realloc(gnl.temp, gnl.len);
-		}
+			resize(&gnl);
 	}
 	gnl.temp = m_realloc(gnl.temp, gnl.conter);
 	gnl.temp[gnl.conter - 1] = '\0';

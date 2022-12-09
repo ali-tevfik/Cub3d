@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:32 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/02 13:16:27 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:17:48 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_player_flag(char *str, t_map_size *map_size)
 	}
 }
 
-int	is_string_maze_part_of_map(char *str, t_map_size *map_size)
+int	find_map(char *str, t_map_size *map_size)
 {
 	int	i;
 
@@ -93,15 +93,14 @@ t_map_size	initiate_map_size(const char *file_name)
 	while (res > 0)
 	{
 		res = exam_get_next_line(fd, &str);
-		if (is_string_maze_part_of_map(str, &map_size) == TRU)
+		if (find_map(str, &map_size) == TRU)
 			get_longest_col_increase_row(str, &map_size);
 		else if (map_size.len_rows == 0)
 			map_size.strings_before_map++;
-		else if (map_size.len_rows > 0
-			&& is_string_maze_part_of_map(str, &map_size) == FLS)
+		else if (map_size.len_rows > 0 && find_map(str, &map_size) == FLS)
 			error_message_exit(ERR_MAP);
 		free(str);
-		if (res == 0) //check for res transfered below string check
+		if (res == 0)
 			break ;
 	}
 	if (close(fd) < 0)

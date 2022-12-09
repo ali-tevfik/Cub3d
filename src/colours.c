@@ -1,22 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:51:50 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/09 13:56:56 by ydemura          ###   ########.fr       */
-=======
-/*                                                        ::::::::            */
-/*   colours.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: adoner <adoner@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:51:50 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/12/09 13:52:45 by adoner        ########   odam.nl         */
->>>>>>> 76e44646f9ff204c8a8eb8e7afe03ac119eeb0c1
+/*   Updated: 2022/12/09 14:01:57 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +17,7 @@
 #include <stdio.h>
 
 //http://www.shodor.org/~efarrow/trunk/html/rgbint.html - calculator for color
-unsigned int	color_maker(int r, int g, int b)
+unsigned int	color_maker(int red, int green, int blue)
 {
 	unsigned int	alpha;
 	unsigned int	res;
@@ -39,9 +29,6 @@ unsigned int	color_maker(int r, int g, int b)
 		res = ((unsigned int)(red << 24 | green << 16 | blue << 8 | alpha));
 	else
 		error_message_exit(ERR_COLOUR);
-
-	// printf("\n\nCOLOR CHECHK\ndecimal: %d\n hexad: %x\n", res, res);
-	// error_message_exit(ERR_COLOUR);
 	return (res);
 }
 

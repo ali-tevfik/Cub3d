@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:52:18 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/08 15:17:26 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:12:31 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
-
-# include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <math.h>
 #include "../cub3d.h"
 
@@ -58,11 +57,10 @@ void	set_plr(char c, t_grid *grid, t_game_state *gstate)
 		gstate->player.pa = 1.5 * M_PI;
 	else if (c == 'S')
 		gstate->player.pa = M_PI * 0.5;
-
 	else if (c == 'E')
-		gstate->player.pa =  M_PI * 2;
+		gstate->player.pa = M_PI * 2;
 	else if (c == 'W')
-		gstate->player.pa =  M_PI ;
+		gstate->player.pa = M_PI ;
 	gstate->player.x_view_direction = cos(gstate->player.pa) * 5;
 	gstate->player.y_view_direction = sin(gstate->player.pa) * 5;
 }
@@ -79,7 +77,7 @@ void	fill_grid(int fd, t_grid *grid, t_game_state *gstate)
 		gstate->map[grid->ri][grid->ci] = FLOOR;
 	else if (grid->c == '1')
 		gstate->map[grid->ri][grid->ci] = WALL;
-	else if (is_maze_space(grid->c))///still not sure if this can be only ' ' or any space
+	else if (is_maze_space(grid->c))
 		gstate->map[grid->ri][grid->ci] = EMPTY;
 	else if (grid->c == 'N' || grid->c == 'S'
 		|| grid->c == 'E' || grid->c == 'W')

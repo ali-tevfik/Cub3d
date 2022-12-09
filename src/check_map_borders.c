@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   check_map_borders.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yuliia <yuliia@student.42.fr>                +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/31 19:51:39 by yuliia        #+#    #+#                 */
-/*   Updated: 2022/11/20 16:19:30 by adoner        ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   check_map_borders.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 19:51:39 by yuliia            #+#    #+#             */
+/*   Updated: 2022/12/09 14:02:16 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/check_map_borders.h"
 #include "../includes/initiate_data.h"
 #include <stdio.h>
-
 
 int	is_neibor_wall_floor(t_grid *grid, int ri, int ci)
 {

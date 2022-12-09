@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliia <yuliia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
-/*   Updated: 2022/11/23 18:08:27 by yuliia           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:18:19 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	str_cmpr_till_n(const char *str, const char *example, int n)
 
 const char	*collect_path(const char *str, const char *extention)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = (int)ft_strlen(str);
@@ -50,7 +50,7 @@ const char	*collect_path(const char *str, const char *extention)
 		return (str);
 	else
 		error_message_exit(ERR_EXTENTION);
-    return (str);
+	return (str);
 }
 
 void	pick_identifier(char *str, t_data *data, int i)
