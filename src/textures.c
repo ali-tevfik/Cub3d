@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/09 14:18:19 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/09 17:57:40 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,18 @@ void	pick_identifier(char *str, t_data *data, int i)
 		error_message_exit(ERR_ELEMENT_IDENTIFIER);
 }
 
+void	double_check(char *str, t_data *data)
+{
+	if (str_cmpr_till_n(str, "NO", 2) && data->no != NULL)
+		error_message_exit(ERR_ELEMENT);
+	else if (str_cmpr_till_n(str, "WE", 2) && data->we != NULL)
+		error_message_exit(ERR_ELEMENT);
+	else if (str_cmpr_till_n(str, "EA", 2) && data->ea != NULL)
+		error_message_exit(ERR_ELEMENT);
+	else if (str_cmpr_till_n(str, "SO", 2) && data->so != NULL)
+		error_message_exit(ERR_ELEMENT);
+}
+
 int	textures_collect(char *str, t_data *data)
 {
 	int	i;
@@ -89,6 +101,7 @@ int	textures_collect(char *str, t_data *data)
 		i += 2;
 	else
 		error_message_exit(ERR_ELEMENT);
+	double_check(str, data);
 	if (is_maze_space(str[i]) == FLS)
 		error_message_exit(ERR_ELEMENT);
 	while (is_maze_space(str[i]) == TRU)
