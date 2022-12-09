@@ -12,6 +12,7 @@ SRCS	=	get_next_line/get_next_line.c\
 			draw3D.c\
 			src/check_map_borders.c\
 			src/colours.c\
+			src/my_atoi_hex.c\
 			src/error_handling.c\
 			src/exam_gnl.c\
 			src/form_data_structure.c\
