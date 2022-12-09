@@ -3,11 +3,10 @@ F  12,64,18
 C 150 , 206, 233
 
 
-NO  textures/Sand1.png
-WE  textures/Dirt_1png.png
-EA  textures/Enviroment.png
-SO  textures/Dirt_2.png
-
+NO textures/set1.png
+WE textures/set2.png
+EA textures/set3.png
+SO textures/set4.png
 
 11111111111111
 11111111000001
