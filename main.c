@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:21:31 by ydemura           #+#    #+#             */
-/*   Updated: 2022/12/09 17:58:47 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/12 11:13:35 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	start_draw(t_parsing_result *data)
 	mlx_terminate(data->mlx);
 }
 
-
-void	leaks(void)
-{
-	system("leaks -q cub3d");
-}
+//	atexit(leaks);
+// void	leaks(void)
+// {
+// 	system("leaks -q cub3d");
+// }
 
 void	fill_text(t_parsing_result *data)
 {
@@ -75,7 +75,6 @@ void	fill_text(t_parsing_result *data)
 
 int	main(int argc, const char **argv)
 {
-	atexit(leaks);
 	t_parsing_result	data;
 
 	data = parsing(argv, argc);
