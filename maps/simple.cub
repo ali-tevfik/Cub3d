@@ -1,11 +1,11 @@
 
-F 255,255,255
-C 0,0,255
+F 234,0,255
+C 255,255,255
 
-NO  ./textures/Stone_wall1.png
-WE  ./textures/example.png
-EA  ./textures/example.png
-SO  ./textures/example.png
+NO  ./textures/n.png
+WE  ./textures/w.png
+EA  ./textures/e.png
+SO  ./textures/s.png
 
 11111111111111111111
 10000000000000000001

@@ -1,6 +1,6 @@
 
-F 255,255,255
-C 234,0,255
+F 100,180,100
+C 12,100,180
 
 NO  ./textures/n.png
 WE  ./textures/w.png

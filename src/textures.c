@@ -6,7 +6,7 @@
 /*   By: ydemura <ydemura@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:53:01 by yuliia            #+#    #+#             */
-/*   Updated: 2022/12/09 17:57:40 by ydemura          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:57:21 by ydemura          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ void	pick_identifier(char *str, t_data *data, int i)
 void	double_check(char *str, t_data *data)
 {
 	if (str_cmpr_till_n(str, "NO", 2) && data->no != NULL)
-		error_message_exit(ERR_ELEMENT);
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
 	else if (str_cmpr_till_n(str, "WE", 2) && data->we != NULL)
-		error_message_exit(ERR_ELEMENT);
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
 	else if (str_cmpr_till_n(str, "EA", 2) && data->ea != NULL)
-		error_message_exit(ERR_ELEMENT);
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
 	else if (str_cmpr_till_n(str, "SO", 2) && data->so != NULL)
-		error_message_exit(ERR_ELEMENT);
+		error_message_exit(ERR_DUPLICATE_ELEMENT);
 }
 
 int	textures_collect(char *str, t_data *data)
